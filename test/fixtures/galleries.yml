@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+gallery1:
+  id: 1
+  name: Name 1
+  description: This is description 1
+  image_url: http://www.google.com
+  
+gallery2:
+  id: 2
+  name: Name 2
+  description: This is description 2
+  image_url: http://www.yahoo.com

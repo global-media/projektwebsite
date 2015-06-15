@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h1 class="text-center">Login</h1>
+    <% if flash[:error] %><div class="error"><%= flash[:error] %></div><% end %>
+</div>
+<div class="modal-body">
+    <%= form_tag '/admin/login', method: :post, :class => "form col-md-12 center-block" do %>
+      <div class="form-group">
+        <%= email_field_tag 'user[email_username]', nil, {class: "form-control input-lg", placeholder: "Email / Username"} %>
+      </div>
+      <div class="form-group">
+        <%= password_field_tag 'user[password]', nil, {class: "form-control input-lg", placeholder: "Password"} %>
+      </div>
+      <div class="form-group">
+        <%= button_tag 'Sign In', name: 'sign_in', class: "btn btn-primary btn-lg btn-block" %><br/>
+        <span class="pull-right"><%= link_to('Sign Up', :action => :signup) %></span><span><%= link_to 'Need help?', :action => :help %></span>
+      </div>
+    <% end %>
+</div>

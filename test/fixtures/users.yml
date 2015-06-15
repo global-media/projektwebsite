@@ -1,0 +1,18 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+#
+
+jaffer:
+  id: 1
+  email: jaffer@shoppingmagz.com
+  first_name: Jaffer
+  last_name: Sadeg
+  username: jaffersadeg
+  password: <%= BCrypt::Password.create(Digest::MD5.hexdigest('jaffer1234')) %>
+  
+henry: 
+  id: 2
+  email: henry@shoppingmagz.com
+  first_name: Henry
+  last_name: Yoshi
+  username: henryyoshi
+  password: <%= BCrypt::Password.create(Digest::MD5.hexdigest('henry1234')) %>

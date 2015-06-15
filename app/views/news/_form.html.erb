@@ -1,0 +1,147 @@
+        <div class="form-group">
+            <label>Title</label>
+            <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
+        <div class="form-group">
+            <label>Author</label>
+            <%= f.text_field :author, class: 'form-control', placeholder: 'Author' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
+        <div class="form-group">
+            <label>Photographer</label>
+            <%= f.text_field :photographer, class: 'form-control', placeholder: 'Photographer' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
+        <div class="form-group">
+            <label>Category ID</label>
+            <%= f.select :category_id, category_options, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <label>Date</label>
+            <%= f.date_field :date, class: 'form-control' %>
+        </div>        
+        <div class="form-group">
+            <label>Image URL</label>
+            <%= f.text_field :image_url, class: 'form-control', placeholder: 'Image URL' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <%= f.text_field :description, class: 'form-control', placeholder: 'Description' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
+        <div class="form-group">
+            <label>Keyword</label>
+            <%= f.text_field :keyword, class: 'form-control', placeholder: 'Keyword' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
+        <div class="form-group">
+            <label>Content</label>
+            <%= f.text_area :content, class: 'form-control', placeholder: 'Content' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
+        <div class="form-group">
+            <label>Publish Date</label>
+            <%= f.date_field :publish_at, class: 'form-control' %>
+        </div>        
+        <div class="form-group">
+            <label>Retract Date</label>
+            <%= f.date_field :retract_at, class: 'form-control' %>
+        </div>        
+        <div class="form-group">
+            <label>Image Upload</label>
+            <%= f.file_field :image, as: :file, class: 'form-control' %>
+        </div>        
+        <% unless @news.new_record? || !@news.image.exists? %>
+        <div class="form-group">
+            <label>Image Tag</label>
+            <%= image_tag @news.image.url(:thumb) %>
+        </div>
+        <div class="form-group">
+            <label>Image Tag</label>
+            <%= image_tag @news.image.url(:medium) %>
+        </div>
+        <div class="form-group">
+            <label>Image Tag</label>
+            <%= image_tag @news.image.url %>
+        </div>
+        <% end %>
+        <!--div class="form-group">
+            <label>File input</label>
+            <input type="file">
+        </div>
+        <div class="form-group">
+            <label>Text area</label>
+            <textarea class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Checkboxes</label>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="">Checkbox 1
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="">Checkbox 2
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="">Checkbox 3
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Inline Checkboxes</label>
+            <label class="checkbox-inline">
+                <input type="checkbox">1
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox">2
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox">3
+            </label>
+        </div>
+        <div class="form-group">
+            <label>Radio Buttons</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Radio 1
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Radio 2
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Radio 3
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Inline Radio Buttons</label>
+            <label class="radio-inline">
+                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>1
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">2
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">3
+            </label>
+        </div>
+        <div class="form-group">
+            <label>Multiple Selects</label>
+            <select multiple class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div-->
