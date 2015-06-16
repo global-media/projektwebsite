@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   attr_accessor :confirm_password
-  
-  validates_confirmation_of :confirm_password
 
+  validates_presence_of :email, :first_name, :username
+  validates_confirmation_of :confirm_password
+  
   def full_name
     "#{first_name} #{last_name}"
   end

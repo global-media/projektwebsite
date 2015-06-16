@@ -1,9 +1,6 @@
 class EventsController < ApplicationController
   layout 'pages'
   
-  def show
-  end
-  
   def new
     @event = Event.new
   end
@@ -14,6 +11,7 @@ class EventsController < ApplicationController
       flash[:success] = 'Event Create success!'
       redirect_to edit_event_url(id: @event.id) and return
     end
+    @errors = @event.errors
     flash[:error] = "We're sorry, we cannot create the event at the moment"
     render template: 'events/new'
   end
@@ -37,6 +35,7 @@ class EventsController < ApplicationController
       flash[:success] = 'Event Update success!'
       redirect_to edit_event_url and return
     end
+    @errors = @event.errors
     flash[:error] = "We're sorry, we cannot update the event at the moment"
     render template: 'events/edit'
   end

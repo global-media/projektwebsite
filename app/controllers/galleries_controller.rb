@@ -1,9 +1,6 @@
 class GalleriesController < ApplicationController
   layout 'pages'
   
-  def show
-  end
-  
   def new
     @gallery = Gallery.new
   end
@@ -14,6 +11,7 @@ class GalleriesController < ApplicationController
       flash[:success] = 'Gallery Create success!'
       redirect_to edit_gallery_url(id: @gallery.id) and return
     end
+    @errors = @gallery.errors
     flash[:error] = "We're sorry, we cannot create the gallery at the moment"
     render template: 'galleries/new'
   end
@@ -37,6 +35,7 @@ class GalleriesController < ApplicationController
       flash[:success] = 'Gallery Update success!'
       redirect_to edit_gallery_url and return
     end
+    @errors = @gallery.errors
     flash[:error] = "We're sorry, we cannot update the gallery at the moment"
     render template: 'galleries/edit'
   end

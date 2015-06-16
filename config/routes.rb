@@ -53,4 +53,68 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  # =========================================
+  # resources :admin
+
+  # get 'pages', controller: 'pages'
+  # 
+  # get 'pages/:controller'
+  
+  # namespace :pages do
+  #   # Directs /pages/products/* to Pages::ProductsController
+  #   # (app/controllers/pages/products_controller.rb)
+  #   resources :products
+  # end
+  
+  namespace :admin do
+    # Directs /admin/products/* to Admin::ProductsController
+    # (app/controllers/admin/products_controller.rb)
+    get 'settings/:action', controller: 'settings'
+    resources :settings
+    resources :users
+    resources :roles
+  end
+  
+  resources :pages, only: [:index] do
+    # resources :charts, :tables, :forms
+    # resource :seller
+  end
+  
+  # resources :charts, only: [:index] do 
+  #   get 'flot' => 'charts#flot'
+  #   get 'morris', action: 'morris'
+  # end
+  
+  # get 'tables/:action', controller: 'tables', action: 'index'
+  # get 'forms/:action', controller: 'forms'
+  get 'elements/:action', controller: 'elements'
+  get 'dropdowns/:action', controller: 'dropdowns'
+  get 'samples/:action', controller: 'samples'
+
+  get 'contents/:action', controller: 'contents'
+
+  resources :charts
+  resources :forms
+  resources :tables
+  
+  resources :banners  
+  resources :news
+  resources :galleries
+  resources :events
+  
+  resources :categories
+  
+  post 'admin/login', controller: 'admin', action: 'authenticate'
+  post 'admin/signup', controller: 'admin', action: 'register'
+  post 'admin/profile', controller: 'admin', action: 'update_profile'
+  
+  get 'admin/:action', controller: 'admin', as: 'admin_action'
+
+  post 'banners/sort', controller: 'banners', action: 'sort'
+  post 'categories/sort', controller: 'categories', action: 'sort'
+
+  get 'charts/:action', controller: 'charts'
+  
+  get '/', controller: 'admin', action: 'index'  
 end

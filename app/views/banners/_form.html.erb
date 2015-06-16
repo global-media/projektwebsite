@@ -1,29 +1,29 @@
         <div class="form-group">
             <label>Name</label>
-            <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+            <%= f.text_field :name, class: "form-control#{' error' unless @banner.errors[:name].blank?}", placeholder: 'Name' %>
             <!--p class="help-block">Example block-level help text here.</p-->
         </div>
         <div class="form-group">
             <label>Image URL</label>
-            <%= f.text_field :image_url, class: 'form-control', placeholder: 'Image URL' %>
+            <%= f.text_field :image_url, class: "form-control#{' error' unless @banner.errors[:image_url].blank?}", placeholder: 'Image URL' %>
             <!--p class="help-block">Example block-level help text here.</p-->
         </div>
         <div class="form-group">
             <label>Link URL</label>
-            <%= f.text_field :link_url, class: 'form-control', placeholder: 'Link URL' %>
+            <%= f.text_field :link_url, class: "form-control#{' error' unless @banner.errors[:link_url].blank?}", placeholder: 'Link URL' %>
             <!--p class="help-block">Example block-level help text here.</p-->
         </div>
         <div class="form-group">
             <label>Publish Date</label>
-            <%= f.date_field :publish_at, class: 'form-control' %>
+            <%= f.date_field :publish_at, class: "form-control#{' error' unless @banner.errors[:publish_at].blank?}" %>
         </div>        
         <div class="form-group">
             <label>Retract Date</label>
-            <%= f.date_field :retract_at, class: 'form-control' %>
+            <%= f.date_field :retract_at, class: "form-control#{' error' unless @banner.errors[:retract_at].blank?}" %>
         </div>        
         <div class="form-group">
             <label>Image Upload</label>
-            <%= f.file_field :image, as: :file, class: 'form-control' %>
+            <%= f.file_field :image, as: :file, class: "form-control#{' error' unless @banner.errors[:image].blank?}" %>
         </div>        
         <% unless @banner.new_record? || !@banner.image.exists? %>
         <div class="form-group">

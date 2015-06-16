@@ -14,6 +14,7 @@ class CategoriesController < ApplicationController
       flash[:success] = 'Category Create success!'
       redirect_to edit_category_url(id: @category.id) and return
     end
+    @errors = @category.errors
     flash[:error] = "We're sorry, we cannot create the category at the moment"
     render template: 'categories/new'
   end
@@ -37,6 +38,7 @@ class CategoriesController < ApplicationController
       flash[:success] = 'Category Update success!'
       redirect_to edit_category_url and return
     end
+    @errors = @category.errors
     flash[:error] = "We're sorry, we cannot update the category at the moment"
     render template: 'categories/edit'
   end

@@ -1,9 +1,6 @@
 class NewsController < ApplicationController
-  layout 'pages.complete'
-  
-  def show
-  end
-  
+  layout 'pages'
+
   def new
     @news = News.new
   end
@@ -14,6 +11,7 @@ class NewsController < ApplicationController
       flash[:success] = 'News Create success!'
       redirect_to edit_news_url(id: @news.id) and return
     end
+    @errors = @news.errors
     flash[:error] = "We're sorry, we cannot create the news at the moment"
     render template: 'news/new'
   end
@@ -37,6 +35,7 @@ class NewsController < ApplicationController
       flash[:success] = 'News Update success!'
       redirect_to edit_news_url and return
     end
+    @errors = @news.errors
     flash[:error] = "We're sorry, we cannot update the news at the moment"
     render template: 'news/edit'
   end

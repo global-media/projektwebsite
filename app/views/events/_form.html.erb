@@ -1,33 +1,33 @@
         <div class="form-group">
             <label>Name</label>
-            <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+            <%= f.text_field :name, class: "form-control#{' error' unless @event.errors[:name].blank?}", placeholder: 'Name' %>
             <!--p class="help-block">Example block-level help text here.</p-->
         </div>
         <div class="form-group">
-            <label>Category ID</label>
-            <%= f.select :category_id, category_options, class: 'form-control' %>
+            <label>Category</label>
+            <%= f.select :category_id, category_options, class: "form-control#{' error' unless @event.errors[:category_id].blank?}" %>
         </div>
         <div class="form-group">
             <label>Date</label>
-            <%= f.date_field :date, class: 'form-control' %>
+            <%= f.date_field :date, class: "form-control#{' error' unless @event.errors[:date].blank?}" %>
         </div>        
         <div class="form-group">
             <label>Venues</label>
-            <%= f.text_field :venues, class: 'form-control', placeholder: 'Venues' %>
+            <%= f.text_field :venues, class: "form-control#{' error' unless @event.errors[:venues].blank?}", placeholder: 'Venues' %>
             <!--p class="help-block">Example block-level help text here.</p-->
         </div>
         <div class="form-group">
             <label>Description</label>
-            <%= f.text_area :description, class: 'form-control', placeholder: 'Description' %>
+            <%= f.text_area :description, class: "form-control#{' error' unless @event.errors[:description].blank?}", placeholder: 'Description' %>
             <!--p class="help-block">Example block-level help text here.</p-->
         </div>
         <div class="form-group">
             <label>Publish Date</label>
-            <%= f.date_field :publish_at, class: 'form-control' %>
+            <%= f.date_field :publish_at, class: "form-control#{' error' unless @event.errors[:publish_at].blank?}" %>
         </div>        
         <div class="form-group">
             <label>Retract Date</label>
-            <%= f.date_field :retract_at, class: 'form-control' %>
+            <%= f.date_field :retract_at, class: "form-control#{' error' unless @event.errors[:retract_at].blank?}" %>
         </div>
         <!--div class="form-group">
             <label>File input</label>

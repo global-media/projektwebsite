@@ -1,34 +1,34 @@
         <div class="form-group">
             <label>Name</label>
-            <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+            <%= f.text_field :name, class: "form-control#{' error' unless @gallery.errors[:name].blank?}", placeholder: 'Name' %>
             <!--p class="help-block">Example block-level help text here.</p-->
         </div>
         <div class="form-group">
             <label>Description</label>
-            <%= f.text_field :description, class: 'form-control', placeholder: 'Description' %>
+            <%= f.text_field :description, class: "form-control#{' error' unless @gallery.errors[:description].blank?}", placeholder: 'Description' %>
             <!--p class="help-block">Example block-level help text here.</p-->
         </div>
         <div class="form-group">
             <label>Category ID</label>
-            <%= f.select :category_id, category_options, class: 'form-control' %>
+            <%= f.select :category_id, category_options, class: "form-control#{' error' unless @gallery.errors[:category_id].blank?}" %>
         </div>
         <div class="form-group">
             <label>Image URL</label>
-            <%= f.text_field :image_url, class: 'form-control', placeholder: 'Image URL' %>
+            <%= f.text_field :image_url, class: "form-control#{' error' unless @gallery.errors[:image_url].blank?}", placeholder: 'Image URL' %>
             <!--p class="help-block">Example block-level help text here.</p-->
         </div>
         <div class="form-group">
             <label>Publish Date</label>
-            <%= f.date_field :publish_at, class: 'form-control' %>
+            <%= f.date_field :publish_at, class: "form-control#{' error' unless @gallery.errors[:publish_at].blank?}" %>
         </div>        
         <div class="form-group">
             <label>Retract Date</label>
-            <%= f.date_field :retract_at, class: 'form-control' %>
+            <%= f.date_field :retract_at, class: "form-control#{' error' unless @gallery.errors[:retract_at].blank?}" %>
         </div>
         <% 1.upto(6).each do |i| %>
         <div class="form-group">
             <label>Image Upload <%= i %></label>
-            <%= f.file_field "image#{i}", as: :file, class: 'form-control' %>
+            <%= f.file_field "image#{i}", as: :file, class: "form-control#{' error' unless @gallery.errors["image#{i}"].blank?}" %>
         </div>        
         <% end %>
         <% unless @gallery.new_record? %>

@@ -1,9 +1,6 @@
 class BannersController < ApplicationController
   layout 'pages'
-  
-  def show
-  end
-  
+
   def new
     @banner = Banner.new
   end
@@ -14,6 +11,7 @@ class BannersController < ApplicationController
       flash[:success] = 'Banner Create success!'
       redirect_to edit_banner_url(id: @banner.id) and return
     end
+    @errors = @banner.errors
     flash[:error] = "We're sorry, we cannot create the banner at the moment"
     render template: 'banners/new'
   end
@@ -37,6 +35,7 @@ class BannersController < ApplicationController
       flash[:success] = 'Banner Update success!'
       redirect_to edit_banner_url and return
     end
+    @errors = @banner.errors
     flash[:error] = "We're sorry, we cannot update the banner at the moment"
     render template: 'banners/edit'
   end
