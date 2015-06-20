@@ -1,57 +1,51 @@
 class AdminController < ApplicationController
-  layout 'admin'
+  layout 'login'
   
-  def index
+  def show
     if logged_in?
-      redirect_to controller: 'pages'
+      redirect_to admin_dashboards_url
     else
-      redirect_to action: 'login'
+      redirect_to action_admin_url(action: 'login')
     end
   end
-  
-  def login
-  end
-  
+
   def logout
-    session[:user] = nil
-    redirect_to controller: 'admin'
-  end
-  
-  def signup
+    clear_session
+    redirect_to admin_url
   end
   
   def register
     user = User.new(user_params)
     if user.save
-      session[:user] = user
+      initialize_session(user)
       flash[:success] = 'Login success!'
-      redirect_to controller: 'pages' and return
+      redirect_to admin_url and return
     end
     flash[:error] = "We're sorry but we cannot sign up at the moment"
-    redirect_to action: 'signup' and return
+    redirect_to action_admin_url(action: 'signup') and return
   end
   
   def authenticate
     if user = User.verify?(params[:user][:email_username], params[:user][:password])
-      session[:user] = user
+      initialize_session(user)
       flash[:success] = 'Login success!'
-      redirect_to controller: 'pages' and return 
+      redirect_to admin_url and return 
     end
     
     flash[:error] = "We're sorry but your login information is invalid"
-    redirect_to action: 'login' and return
+    redirect_to action_admin_url(action: 'login') and return
   end
   
   def profile
     @user = User.find(session[:user]['id'])
-    render layout: 'pages'
+    render layout: 'settings'
   end
   
   def update_profile
     user = User.find(user_params[:id])
     if user.update_attributes(user_params)
       flash[:success] = 'Profile Update success!'
-      redirect_to action: 'profile' and return
+      redirect_to action_admin_url(action: 'profile') and return
     end
     flash[:error] = "We're sorry, we cannot update your profile at the moment"
     render template: 'profile'
@@ -61,5 +55,13 @@ class AdminController < ApplicationController
 
     def user_params
       params.require(:user).permit!
+    end
+
+    def initialize_session(user)
+      session[:user] = user.sanitize!
+    end
+    
+    def clear_session
+      session[:user] = nil
     end
 end

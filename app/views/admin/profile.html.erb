@@ -15,7 +15,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            <%= form_for @user, url: {controller: 'admin', action: 'profile'}, html: {role: 'form', method: 'post', multipart: true} do |f| %>
+                            <%= form_for @user, url: profile_admin_url, html: {role: 'form', method: 'post', multipart: true} do |f| %>
                                 <%= f.hidden_field :id %>
                                 <div class="form-group">
                                     <label>Email</label>
@@ -45,7 +45,6 @@
                                     <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
                                     <!--p class="help-block">Example block-level help text here.</p-->
                                 </div>
-
 
                                 <!--div class="form-group">
                                     <label>File input</label>
@@ -135,7 +134,8 @@
                                         <option>5</option>
                                     </select>
                                 </div-->
-                                <%= button_tag 'Update Profile', type: 'submit', class: "btn btn-default" %>
+
+                                <%= button_tag 'Update Profile', type: 'submit', class: "btn btn-warning" %>
                                 <%= button_tag 'Cancel', type: 'reset', class: "btn btn-default" %>
                             <% end %>
                         </div>

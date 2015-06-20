@@ -73,10 +73,10 @@
                 <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><%= link_to " User Profile", admin_action_url(action: 'profile'), {class: "fa fa-user fa-fw"} %></li>
+                <li><%= link_to " User Profile", action_admin_url(action: 'profile'), {class: "fa fa-user fa-fw"} %></li>
                 <li><%= link_to " Settings", admin_settings_url, {class: "fa fa-gear fa-fw"} %></li>
                 <li class="divider"></li>
-                <li><%= link_to " Logout", admin_action_url(action: 'logout'), {class: "fa fa-sign-out fa-fw"} %></li>
+                <li><%= link_to " Logout", action_admin_url(action: 'logout'), {class: "fa fa-sign-out fa-fw"} %></li>
             </ul>
             <!-- /.dropdown-user -->
         </li>

@@ -1,7 +1,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Banners
-            <%= link_to 'Add Banner', new_banner_url, class: "btn btn-primary pull-right" %>
+            <%= link_to 'Add Banner', new_admin_contents_banner_url, class: "btn btn-primary pull-right" %>
             </h1>
         </div>
         <!-- /.col-lg-12 -->
@@ -16,7 +16,7 @@
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                  <%= form_tag  banners_sort_url, {role: 'form', method: 'post'} do |f| %>
+                  <%= form_tag  sort_admin_contents_banners_url, {role: 'form', method: 'post'} do |f| %>
                     <div class="table-responsive">
                         <table class="table table-hover sortable sorted_table">
                             <thead>
@@ -39,15 +39,15 @@
                                     <td><%= banner.image_url %></td>
                                     <td><%= banner.link_url %></td>
                                     <td>
-                                      <%= link_to 'Edit', edit_banner_url(id: banner.id), class: "btn btn-warning" %>
-                                      <%= link_to 'Delete', banner, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete this banner?" } %>
+                                      <%= link_to 'Edit', edit_admin_contents_banner_url(id: banner.id), class: "btn btn-warning" %>
+                                      <%= link_to 'Delete', admin_contents_banner_url(id: banner.id), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete this banner?" } %>
                                     </td>
                                 </tr>
                                 <% end %>
                             </tbody>
                         </table>
                     </div>
-                    <div><%= button_tag 'Sort Banner', type: 'submit', class: "btn btn-default" %></div>
+                    <div><%= button_tag 'Sort Banner', type: 'submit', class: "btn btn-primary" %></div>
                     <!-- /.table-responsive -->
                     <% end %>
                 </div>

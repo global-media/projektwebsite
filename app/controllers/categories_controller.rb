@@ -1,8 +1,5 @@
 class CategoriesController < ApplicationController
-  layout 'pages'
-  
-  def show
-  end
+  layout 'contents'
   
   def new
     @category = Category.new
@@ -12,7 +9,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     if @category.save
       flash[:success] = 'Category Create success!'
-      redirect_to edit_category_url(id: @category.id) and return
+      redirect_to edit_admin_contents_category_url(id: @category.id) and return
     end
     @errors = @category.errors
     flash[:error] = "We're sorry, we cannot create the category at the moment"
@@ -29,14 +26,14 @@ class CategoriesController < ApplicationController
   
   def destroy
     Category.find(params[:id]).destroy
-    redirect_to categories_url
+    redirect_to admin_contents_categories_url
   end
   
   def update
     @category = Category.find(params[:id])
     if @category.update_attributes(category_params)
       flash[:success] = 'Category Update success!'
-      redirect_to edit_category_url and return
+      redirect_to edit_admin_contents_category_url and return
     end
     @errors = @category.errors
     flash[:error] = "We're sorry, we cannot update the category at the moment"
@@ -46,7 +43,7 @@ class CategoriesController < ApplicationController
   def sort
     Category.sort!(params[:category][:sort])
     flash[:success] = 'Category Sort success!'
-    redirect_to categories_url
+    redirect_to admin_contents_categories_url
   end
   
   protected

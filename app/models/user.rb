@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
-  attr_accessor :confirm_password
+  belongs_to :role
 
   validates_presence_of :email, :first_name, :username
   validates_confirmation_of :confirm_password
+
+  attr_accessor :confirm_password
   
   def full_name
     "#{first_name} #{last_name}"
@@ -25,5 +27,8 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(password) == Digest::MD5.hexdigest(unencrypted_password) ? self : false
   end
   
-  
+  def sanitize!
+    self[:password] = '[FILTERED]'
+    self
+  end
 end

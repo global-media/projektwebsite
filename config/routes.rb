@@ -55,66 +55,76 @@ Rails.application.routes.draw do
   #   end
   
   # =========================================
-  # resources :admin
-
-  # get 'pages', controller: 'pages'
-  # 
-  # get 'pages/:controller'
-  
-  # namespace :pages do
-  #   # Directs /pages/products/* to Pages::ProductsController
-  #   # (app/controllers/pages/products_controller.rb)
-  #   resources :products
-  # end
-  
-  namespace :admin do
+  # =========================================
+  # =========================================
+    
+  resource :admin, controller: 'admin' do
     # Directs /admin/products/* to Admin::ProductsController
     # (app/controllers/admin/products_controller.rb)
-    get 'settings/:action', controller: 'settings'
-    resources :settings
-    resources :users
-    resources :roles
-  end
-  
-  resources :pages, only: [:index] do
-    # resources :charts, :tables, :forms
-    # resource :seller
-  end
-  
-  # resources :charts, only: [:index] do 
-  #   get 'flot' => 'charts#flot'
-  #   get 'morris', action: 'morris'
-  # end
-  
-  # get 'tables/:action', controller: 'tables', action: 'index'
-  # get 'forms/:action', controller: 'forms'
-  get 'elements/:action', controller: 'elements'
-  get 'dropdowns/:action', controller: 'dropdowns'
-  get 'samples/:action', controller: 'samples'
+    # get 'settings/:action', controller: 'settings'
+    
+    post 'login', controller: 'admin', action: 'authenticate', on: :collection
+    post 'signup', controller: 'admin', action: 'register', on: :collection
+    post 'profile', controller: 'admin', action: 'update_profile', on: :collection
+    
+    resource :settings do 
+      resources :users
+      resources :roles do
+        post 'sort', on: :collection
+      end
+      get ':action', on: :collection, as: 'action'
+    end
+    
+    
+    resource :contents do
+      resources :banners do
+        post 'sort', on: :collection
+      end
+      
+      resources :news
+      resources :galleries
+      resources :events
+      resources :categories do
+        post 'sort', on: :collection
+      end
+    end
 
-  get 'contents/:action', controller: 'contents'
+    resource :store, controller: 'store' do
+      resources :products do 
+        post 'sort', on: :collection
+        get ':action', on: :collection, as: 'action'
+        resources :product_items, as: 'items' do
+          post 'sort', on: :collection
+        end
+      end
+      
+      resources :orders, except: [:new, :create, :destroy] do
+        post 'cancel/:id', on: :collection, action: 'cancel', as: 'cancel'
+        post 'revert/:id', on: :collection, action: 'revert', as: 'revert'
+        post 'process/:id', on: :collection, action: 'do_process', as: 'process'
+        get ':id/:action', on: :collection, as: 'action', id: nil
+      end
+      
+      resources :collections do
+        post 'sort', on: :collection
+        get ':action', on: :collection, as: 'action'
+      end
+      
+      resources :customers
+    end
 
-  resources :charts
-  resources :forms
-  resources :tables
+    resources :dashboards
+        
+    resources :maps do 
+      get ':action', on: :collection, as: 'action'
+    end
+        
+    resources :images
+    resources :forms
+    resources :tables
+    
+    get ':action', controller: 'admin', on: :collection, as: 'action'
+  end  
   
-  resources :banners  
-  resources :news
-  resources :galleries
-  resources :events
-  
-  resources :categories
-  
-  post 'admin/login', controller: 'admin', action: 'authenticate'
-  post 'admin/signup', controller: 'admin', action: 'register'
-  post 'admin/profile', controller: 'admin', action: 'update_profile'
-  
-  get 'admin/:action', controller: 'admin', as: 'admin_action'
-
-  post 'banners/sort', controller: 'banners', action: 'sort'
-  post 'categories/sort', controller: 'categories', action: 'sort'
-
-  get 'charts/:action', controller: 'charts'
-  
-  get '/', controller: 'admin', action: 'index'  
+  get '/', controller: 'admin', action: 'show'  
 end

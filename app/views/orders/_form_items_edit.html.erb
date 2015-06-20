@@ -1,0 +1,19 @@
+      <div class="form-group">
+          <label>Product Name</label>
+          <%= order_item.product_item.name_option %>
+      </div>
+      <div class="form-group">
+          <label>Sold Price</label>
+          <%= text_field_tag "order_item[#{order_item.id}][sold_price]", order_item.sold_price, class: "form-control#{' error' unless order_item.errors[:sold_price].blank?}", placeholder: 'Sold Price' %>
+          <!--p class="help-block">Example block-level help text here.</p-->
+      </div>
+      <div class="form-group">
+          <label>Original Price</label>
+          <%= text_field_tag "order_item[#{order_item.id}][original_price]", order_item.original_price, class: "form-control#{' error' unless order_item.errors[:original_price].blank?}", placeholder: 'Original Price' %>
+          <!--p class="help-block">Example block-level help text here.</p-->
+      </div>
+      <div class="form-group">
+          <label>Quantity</label>
+          <%= text_field_tag "order_item[#{order_item.id}][quantity]", order_item.quantity, class: "form-control#{' error' unless order_item.errors[:quantity].blank?}", placeholder: 'Quantity' %>
+          <!--p class="help-block">Example block-level help text here.</p-->
+      </div>

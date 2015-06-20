@@ -1,5 +1,5 @@
 class NewsController < ApplicationController
-  layout 'pages'
+  layout 'contents'
 
   def new
     @news = News.new
@@ -9,7 +9,7 @@ class NewsController < ApplicationController
     @news = News.new(news_params)
     if @news.save
       flash[:success] = 'News Create success!'
-      redirect_to edit_news_url(id: @news.id) and return
+      redirect_to edit_admin_contents_news_url(id: @news.id) and return
     end
     @errors = @news.errors
     flash[:error] = "We're sorry, we cannot create the news at the moment"
@@ -26,14 +26,14 @@ class NewsController < ApplicationController
   
   def destroy
     News.find(params[:id]).destroy
-    redirect_to news_index_url
+    redirect_to admin_contents_news_index_url
   end
   
   def update
     @news = News.find(params[:id])
     if @news.update_attributes(news_params)
       flash[:success] = 'News Update success!'
-      redirect_to edit_news_url and return
+      redirect_to edit_admin_contents_news_url and return
     end
     @errors = @news.errors
     flash[:error] = "We're sorry, we cannot update the news at the moment"
@@ -43,7 +43,7 @@ class NewsController < ApplicationController
   # def sort
   #   News.sort!(params[:news][:sort])
   #   flash[:success] = 'News Sort success!'
-  #   redirect_to news_index_url
+  #   redirect_to admin_contents_news_index_url
   # end
   
   protected

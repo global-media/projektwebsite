@@ -1,5 +1,5 @@
 class GalleriesController < ApplicationController
-  layout 'pages'
+  layout 'contents'
   
   def new
     @gallery = Gallery.new
@@ -9,7 +9,7 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.new(gallery_params)
     if @gallery.save
       flash[:success] = 'Gallery Create success!'
-      redirect_to edit_gallery_url(id: @gallery.id) and return
+      redirect_to edit_admin_contents_gallery_url(id: @gallery.id) and return
     end
     @errors = @gallery.errors
     flash[:error] = "We're sorry, we cannot create the gallery at the moment"
@@ -26,14 +26,14 @@ class GalleriesController < ApplicationController
   
   def destroy
     Gallery.find(params[:id]).destroy
-    redirect_to galleries_url
+    redirect_to admin_contents_galleries_url
   end
   
   def update
     @gallery = Gallery.find(params[:id])
     if @gallery.update_attributes(gallery_params)
       flash[:success] = 'Gallery Update success!'
-      redirect_to edit_gallery_url and return
+      redirect_to edit_admin_contents_gallery_url and return
     end
     @errors = @gallery.errors
     flash[:error] = "We're sorry, we cannot update the gallery at the moment"
@@ -43,7 +43,7 @@ class GalleriesController < ApplicationController
   # def sort
   #   Gallery.sort!(params[:gallery][:sort])
   #   flash[:success] = 'Gallery Sort success!'
-  #   redirect_to galleries_url
+  #   redirect_to admin_contents_galleries_url
   # end
   
   protected

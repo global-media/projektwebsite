@@ -11,10 +11,10 @@
                 <div class="panel-body">
                     <div class="row">
                       <div class="col-lg-6">
-                          <%= form_for @gallery, {role: 'form', method: 'post', multipart: true} do |f| %>
+                          <%= form_for @gallery, {url: admin_contents_galleries_url, role: 'form', method: 'post', multipart: true} do |f| %>
                               <%= render partial: 'form', locals: {f: f} %>
                               <%= button_tag 'Create Gallery', type: 'submit', class: "btn btn-default" %>
-                              <%= button_tag 'Reset', url: galleries_url, class: "btn btn-default", method: 'get', type: 'reset' %>
+                              <%= button_tag 'Reset', url: admin_contents_galleries_url, class: "btn btn-default", method: 'get', type: 'reset' %>
                           <% end %>
                       </div>
                       <!-- /.col-lg-6 (nested) -->

@@ -1,0 +1,34 @@
+        <%= f.hidden_field :product_id, {value: params[:product_id]} %>
+        <div class="form-group">
+            <label>Option</label>
+            <%= f.text_field :option, class: "form-control#{' error' unless @product_item.errors[:option].blank?}", placeholder: 'Option' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
+        <div class="form-group">
+            <label>SKU</label>
+            <%= f.text_field :sku, class: "form-control#{' error' unless @product_item.errors[:sku].blank?}", placeholder: 'SKU' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+            <%= f.text_field :price, class: "form-control#{' error' unless @product_item.errors[:price].blank?}", placeholder: 'Price' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
+        <div class="form-group">
+            <label>Sale Price</label>
+            <%= f.text_field :sale_price, class: "form-control#{' error' unless @product_item.errors[:sale_price].blank?}", placeholder: 'Sale Price' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
+        <div class="form-group">
+            <label>Stock</label>
+            <%= f.text_field :stock, class: "form-control#{' error' unless @product_item.errors[:stock].blank?}", placeholder: 'Stock' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
+        <div class="form-group">
+            <label>Publish Date</label>
+            <%= f.date_field :publish_at, class: "form-control#{' error' unless @product_item.errors[:publish_at].blank?}" %>
+        </div>        
+        <div class="form-group">
+            <label>Retract Date</label>
+            <%= f.date_field :retract_at, class: "form-control#{' error' unless @product_item.errors[:retract_at].blank?}" %>
+        </div>

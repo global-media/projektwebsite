@@ -16,42 +16,68 @@
                             </div>
                         </li-->
                         <li>
-                            <%= link_to raw('<i class="fa fa-dashboard fa-fw"></i> Dashboard'), pages_url %>
+                            <%= link_to raw('<i class="fa fa-dashboard fa-fw"></i> Dashboard'), admin_dashboards_url %>
                         </li>
                         <li>
-                            <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Content<span class="fa arrow"></span>'), '#' %>
+                            <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Content<span class="fa arrow"></span>'), admin_contents_url %>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <%= link_to "Banners", banners_url %>
+                                    <%= link_to "Banners", admin_contents_banners_url %>
                                 </li>
                                 <li>
-                                    <%= link_to "News", news_index_url %>
+                                    <%= link_to "News", admin_contents_news_index_url %>
                                 </li>
                                 <li>
-                                    <%= link_to "Gallery", galleries_url %>
+                                    <%= link_to "Galleries", admin_contents_galleries_url %>
                                 </li>
                                 <li>
-                                    <%= link_to "Calender Events", events_url %>
+                                    <%= link_to "Calender Events", admin_contents_events_url %>
+                                </li>
+                                <li>
+                                    <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Categories'), admin_contents_categories_url %>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <%= link_to raw('<i class="fa fa-table fa-fw"></i> Tables'), tables_url %>
+                            <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Store<span class="fa arrow"></span>'), admin_store_url %>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <%= link_to "Products", admin_store_products_url %>
+                                </li>
+                                <li>
+                                    <%= link_to "Orders", admin_store_orders_url %>
+                                </li>
+                                <li>
+                                    <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Collections'), admin_store_collections_url %>
+                                </li>
+                            </ul>
                         </li>
                         <li>
-                            <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Categories'), categories_url %>
+                            <%= link_to raw('<i class="fa fa-table fa-fw"></i> Tables'), admin_tables_url %>
+                        </li>
+                        <li>
+                            <%= link_to raw('<i class="fa fa-bar-chart-o fa-fw"></i> Maps<span class="fa arrow"></span>'), admin_maps_url %>
+                            <ul class="nav nav-second-level">
+                                <!--li>
+                                    <  %= link_to "Flat Maps", {controller: 'maps', action: 'flat'} %  >
+                                </li-->
+                                <li>
+                                    <%= link_to "Google Maps", admin_maps_url %>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>
                         <!--li>
-                            <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Forms'), forms_url %>
+                            <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Forms'), admin_forms_url %>
                         </li>
                         <li>
-                            <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Forms'), forms_url %>
+                            <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Forms'), admin_forms_url %>
                         </li>
                         <li>
-                            <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Forms'), forms_url %>
+                            <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Forms'), admin_forms_url %>
                         </li>
                         <li>
-                            <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Forms'), forms_url %>
+                            <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Forms'), admin_forms_url %>
                         </li-->
                     </ul>
                 </div>

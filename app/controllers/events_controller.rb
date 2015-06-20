@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  layout 'pages'
+  layout 'contents'
   
   def new
     @event = Event.new
@@ -9,7 +9,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     if @event.save
       flash[:success] = 'Event Create success!'
-      redirect_to edit_event_url(id: @event.id) and return
+      redirect_to edit_admin_contents_event_url(id: @event.id) and return
     end
     @errors = @event.errors
     flash[:error] = "We're sorry, we cannot create the event at the moment"
@@ -26,14 +26,14 @@ class EventsController < ApplicationController
   
   def destroy
     Event.find(params[:id]).destroy
-    redirect_to events_url
+    redirect_to admin_contents_events_url
   end
   
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(event_params)
       flash[:success] = 'Event Update success!'
-      redirect_to edit_event_url and return
+      redirect_to edit_admin_contents_event_url and return
     end
     @errors = @event.errors
     flash[:error] = "We're sorry, we cannot update the event at the moment"
@@ -43,7 +43,7 @@ class EventsController < ApplicationController
   # def sort
   #   Event.sort!(params[:event][:sort])
   #   flash[:success] = 'Event Sort success!'
-  #   redirect_to events_url
+  #   redirect_to admin_contents_events_url
   # end
   
   protected

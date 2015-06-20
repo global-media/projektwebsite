@@ -1,5 +1,5 @@
 class BannersController < ApplicationController
-  layout 'pages'
+  layout 'contents'
 
   def new
     @banner = Banner.new
@@ -9,7 +9,7 @@ class BannersController < ApplicationController
     @banner = Banner.new(banner_params)
     if @banner.save
       flash[:success] = 'Banner Create success!'
-      redirect_to edit_banner_url(id: @banner.id) and return
+      redirect_to edit_admin_contents_banner_url(id: @banner.id) and return
     end
     @errors = @banner.errors
     flash[:error] = "We're sorry, we cannot create the banner at the moment"
@@ -26,14 +26,14 @@ class BannersController < ApplicationController
   
   def destroy
     Banner.find(params[:id]).destroy
-    redirect_to banners_url
+    redirect_to admin_contents_banners_url
   end
   
   def update
     @banner = Banner.find(params[:id])
     if @banner.update_attributes(banner_params)
       flash[:success] = 'Banner Update success!'
-      redirect_to edit_banner_url and return
+      redirect_to edit_admin_contents_banner_url and return
     end
     @errors = @banner.errors
     flash[:error] = "We're sorry, we cannot update the banner at the moment"
@@ -43,7 +43,7 @@ class BannersController < ApplicationController
   def sort
     Banner.sort!(params[:banner][:sort])
     flash[:success] = 'Banner Sort success!'
-    redirect_to banners_url
+    redirect_to admin_contents_banners_url
   end
   
   protected

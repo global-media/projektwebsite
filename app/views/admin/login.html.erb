@@ -3,7 +3,7 @@
     <% if flash[:error] %><div class="error"><%= flash[:error] %></div><% end %>
 </div>
 <div class="modal-body">
-    <%= form_tag '/admin/login', method: :post, :class => "form col-md-12 center-block" do %>
+    <%= form_tag login_admin_url, method: :post, :class => "form col-md-12 center-block" do %>
       <div class="form-group">
         <%= email_field_tag 'user[email_username]', nil, {class: "form-control input-lg", placeholder: "Email / Username"} %>
       </div>
@@ -12,7 +12,7 @@
       </div>
       <div class="form-group">
         <%= button_tag 'Sign In', name: 'sign_in', class: "btn btn-primary btn-lg btn-block" %><br/>
-        <span class="pull-right"><%= link_to('Sign Up', :action => :signup) %></span><span><%= link_to 'Need help?', :action => :help %></span>
+        <span class="pull-right"><%= link_to 'Sign Up', action_admin_url(action: :signup) %></span><span><%= link_to 'Need help?', action_admin_url(action: :help) %></span>
       </div>
     <% end %>
 </div>

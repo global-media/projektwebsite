@@ -1,0 +1,42 @@
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Order ID #<%= @order.id %></h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>    
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+              <%= form_tag admin_store_order_url(id: @order.id), role: 'form', method: 'put', multipart: true do |f| %>
+                <div class="panel-body">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <%= hidden_field_tag "order[id]", @order.id %>
+                        <%= render partial: 'form' %>
+                      </div>
+                      <!-- /.col-lg-6 (nested) -->
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <h2>Order Items</h2>
+                        <% @order.items.each_with_index do |order_item, i| %>
+                          <%= render partial: 'form_items_edit', locals: {order_item: order_item} %>
+                        <% end %>
+                        <%= button_tag 'Update Order', type: 'submit', class: "btn btn-warning" %>
+                        <%= button_tag 'Reset', url: admin_store_orders_url, class: "btn btn-default", method: 'get', type: 'reset' %>
+                      </div>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+                <% end %>                
+                <!--%= render partial: 'orders/items_index' %-->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->

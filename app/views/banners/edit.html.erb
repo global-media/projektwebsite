@@ -11,11 +11,11 @@
                 <div class="panel-body">
                     <div class="row">
                       <div class="col-lg-6">
-                          <%= form_for @banner, {role: 'form', method: 'put', multipart: true} do |f| %>
+                          <%= form_for @banner, {url: admin_contents_banner_url(id: @banner.id), role: 'form', method: 'put', multipart: true} do |f| %>
                               <%= f.hidden_field :id %>
                               <%= render partial: 'form', locals: {f: f} %>
                               <%= button_tag 'Update Banner', type: 'submit', class: "btn btn-default" %>
-                              <%= button_tag 'Reset', url: banners_url, class: "btn btn-default", method: 'get', type: 'reset' %>
+                              <%= button_tag 'Reset', url: admin_contents_banners_url, class: "btn btn-default", method: 'get', type: 'reset' %>
                           <% end %>
                       </div>
                       <!-- /.col-lg-6 (nested) -->

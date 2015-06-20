@@ -1,0 +1,42 @@
+<div class="col-lg-12">
+    <h1 class="page-header">Products
+    <%= link_to 'Add Item', new_admin_store_product_item_url(product_id: @product.id), class: "btn btn-primary pull-right" %>
+    </h1>
+</div>
+<div class="panel-body">
+  <%= form_tag  sort_admin_store_product_items_url(product_id: @product.id), {role: 'form', method: 'post'} do |f| %>
+    <div class="table-responsive">
+        <table class="table table-hover sortable sorted_table">
+            <thead>
+                <tr>
+                    <th>Sort</th>
+                    <th>Option</th>
+                    <th>SKU</th>
+                    <th>Price</th>
+                    <th>Sale Price</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>                              
+                <% @product.items.each do |product_item| %>
+                <tr class="sort" id="<%= product_item.id %>">
+                    <%= hidden_field_tag "product_item[sort][#{product_item.id}][old]", product_item.sort %>
+                    <td><%= text_field_tag "product_item[sort][#{product_item.id}][new]", product_item.sort, class: 'form-control-size', placeholder: 'Sort #', size: 3, maxlength: 3 %></td>
+                    <td><%= product_item.option %></td>
+                    <td><%= product_item.sku %></td>
+                    <td><%= product_item.price %></td>
+                    <td><%= product_item.sale_price %></td>
+                    <td>
+                      <%= link_to 'Edit', edit_admin_store_product_item_url(product_id: @product.id, id: product_item.id), class: "btn btn-warning" %>
+                      <%= link_to 'Delete', admin_store_product_item_url(product_id: @product.id, id: product_item.id), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete this product item?" } %>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    <div><%= button_tag 'Sort Items', type: 'submit', class: "btn btn-primary" %></div>
+    <!-- /.table-responsive -->
+    <% end %>
+</div>
+<!-- /.panel-body -->

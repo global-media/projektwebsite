@@ -8,6 +8,7 @@ jaffer:
   last_name: Sadeg
   username: jaffersadeg
   password: <%= BCrypt::Password.create(Digest::MD5.hexdigest('jaffer1234')) %>
+  role_id: 1
   
 henry: 
   id: 2
@@ -16,3 +17,4 @@ henry:
   last_name: Yoshi
   username: henryyoshi
   password: <%= BCrypt::Password.create(Digest::MD5.hexdigest('henry1234')) %>
+  role_id: 2
