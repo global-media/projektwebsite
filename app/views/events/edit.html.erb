@@ -14,7 +14,7 @@
                           <%= form_for @event, {url: admin_contents_event_url(id: @event.id), role: 'form', method: 'put', multipart: true} do |f| %>
                               <%= f.hidden_field :id %>
                               <%= render partial: 'form', locals: {f: f} %>
-                              <%= button_tag 'Update Event', type: 'submit', class: "btn btn-default" %>
+                              <%= button_tag 'Update Event', type: 'submit', class: "btn btn-warning" %>
                               <%= button_tag 'Reset', url: admin_contents_events_url, class: "btn btn-default", method: 'get', type: 'reset' %>
                           <% end %>
                       </div>

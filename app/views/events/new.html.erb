@@ -13,7 +13,7 @@
                       <div class="col-lg-6">
                           <%= form_for @event, {url: admin_contents_events_url, role: 'form', method: 'post', multipart: true} do |f| %>
                               <%= render partial: 'form', locals: {f: f} %>
-                              <%= button_tag 'Create Event', type: 'submit', class: "btn btn-default" %>
+                              <%= button_tag 'Create Event', type: 'submit', class: "btn btn-primary" %>
                               <%= button_tag 'Reset', url: admin_contents_events_url, class: "btn btn-default", method: 'get', type: 'reset' %>
                           <% end %>
                       </div>

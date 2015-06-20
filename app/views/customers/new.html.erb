@@ -1,7 +1,7 @@
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Category</h1>
-        </div>
+            <h1 class="page-header">Customer</h1>
+        </div>        
         <!-- /.col-lg-12 -->
     </div>    
     <!-- /.row -->
@@ -11,11 +11,10 @@
                 <div class="panel-body">
                     <div class="row">
                       <div class="col-lg-6">
-                          <%= form_for @category, {url: admin_contents_category_url(id: @category.id), role: 'form', method: 'put', multipart: true} do |f| %>
-                              <%= f.hidden_field :id %>
+                          <%= form_for @customer, {url: admin_store_customers_url, role: 'form', method: 'post', multipart: true} do |f| %>
                               <%= render partial: 'form', locals: {f: f} %>
-                              <%= button_tag 'Update Category', type: 'submit', class: "btn btn-warning" %>
-                              <%= button_tag 'Reset', url: admin_contents_categories_url, class: "btn btn-default", method: 'get', type: 'reset' %>
+                              <%= button_tag 'Create Customer', type: 'submit', class: "btn btn-primary" %>
+                              <%= button_tag 'Reset', url: admin_store_customers_url, class: "btn btn-default", method: 'get', type: 'reset' %>
                           <% end %>
                       </div>
                       <!-- /.col-lg-6 (nested) -->

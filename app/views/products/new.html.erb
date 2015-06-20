@@ -13,7 +13,7 @@
                       <div class="col-lg-6">
                           <%= form_for @product, {url: admin_store_products_url, role: 'form', method: 'post', multipart: true} do |f| %>
                               <%= render partial: 'form', locals: {f: f} %>
-                              <%= button_tag 'Create Product', type: 'submit', class: "btn btn-default" %>
+                              <%= button_tag 'Create Product', type: 'submit', class: "btn btn-primary" %>
                               <%= button_tag 'Reset', url: admin_store_products_url, class: "btn btn-default", method: 'get', type: 'reset' %>
                           <% end %>
                       </div>

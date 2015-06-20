@@ -13,7 +13,7 @@
                       <div class="col-lg-6">
                           <%= form_for @banner, {url: admin_contents_banners_url, role: 'form', method: 'post', multipart: true} do |f| %>
                               <%= render partial: 'form', locals: {f: f} %>
-                              <%= button_tag 'Create Banner', type: 'submit', class: "btn btn-default" %>
+                              <%= button_tag 'Create Banner', type: 'submit', class: "btn btn-primary" %>
                               <%= button_tag 'Reset', url: admin_contents_banners_url, class: "btn btn-default", method: 'get', type: 'reset' %>
                           <% end %>
                       </div>

@@ -14,7 +14,7 @@
                           <%= form_for @gallery, {url: admin_contents_gallery_url(id: @gallery.id), role: 'form', method: 'put', multipart: true} do |f| %>
                               <%= f.hidden_field :id %>
                               <%= render partial: 'form', locals: {f: f} %>
-                              <%= button_tag 'Update Gallery', type: 'submit', class: "btn btn-default" %>
+                              <%= button_tag 'Update Gallery', type: 'submit', class: "btn btn-warning" %>
                               <%= button_tag 'Reset', url: admin_contents_galleries_url, class: "btn btn-default", method: 'get', type: 'reset' %>
                           <% end %>
                       </div>
