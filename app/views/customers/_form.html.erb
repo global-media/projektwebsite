@@ -18,4 +18,12 @@
             <%= f.text_field :username, class: "form-control#{' error' unless @customer.errors[:username].blank?}", placeholder: 'Username' %>
             <!--p class="help-block">Example block-level help text here.</p-->
         </div>
-        
+        <div class="form-group">
+            <label>Gender</label>
+            <%= f.select :gender, gender_options, {}, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <label>Birthdate</label>
+            <%= f.date_field :birthdate, class: "form-control#{' error' unless @customer.errors[:birthdate].blank?}" %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
