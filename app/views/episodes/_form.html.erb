@@ -1,0 +1,40 @@
+        <div class="form-group">
+            <label>Name</label>
+            <%= f.text_field :name, class: "form-control#{' error' unless @episode.errors[:name].blank?}", placeholder: 'Name' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
+        <div class="form-group">
+            <label>Details</label>
+            <%= f.text_field :details, class: "form-control#{' error' unless @episode.errors[:details].blank?}", placeholder: 'Details' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
+        <div class="form-group">
+            <label>Comic</label>
+            <%= f.select :comic_id, comic_options, {}, class: "form-control#{' error' unless @episode.errors[:comic_id].blank?}" %>
+        </div>
+        <div class="form-group">
+            <label>Publish Date</label>
+            <%= f.date_field :publish_at, class: "form-control#{' error' unless @episode.errors[:publish_at].blank?}" %>
+        </div>        
+        <div class="form-group">
+            <label>Retract Date</label>
+            <%= f.date_field :retract_at, class: "form-control#{' error' unless @episode.errors[:retract_at].blank?}" %>
+        </div>        
+        <div class="form-group">
+            <label>Image Upload</label>
+            <%= f.file_field :image, as: :file, class: "form-control#{' error' unless @episode.errors[:image].blank?}" %>
+        </div>        
+        <% unless @episode.new_record? || !@episode.image.exists? %>
+        <div class="form-group">
+            <label>Image Tag</label>
+            <%= image_tag @episode.image.url(:thumb) %>
+        </div>
+        <div class="form-group">
+            <label>Image Tag</label>
+            <%= image_tag @episode.image.url(:medium) %>
+        </div>
+        <div class="form-group">
+            <label>Image Tag</label>
+            <%= image_tag @episode.image.url %>
+        </div>
+        <% end %>

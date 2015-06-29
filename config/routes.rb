@@ -81,9 +81,18 @@ Rails.application.routes.draw do
         post 'sort', on: :collection
       end
       
-      resources :news
-      resources :galleries
+      # resources :news
+      resources :comics do
+        resources :episodes do
+          post 'sort', on: :collection
+        end
+        post 'sort', on: :collection
+      end
+      
+      resources :episodes
+      # resources :galleries
       resources :events
+      resources :images
       resources :categories do
         post 'sort', on: :collection
       end
@@ -113,18 +122,22 @@ Rails.application.routes.draw do
       resources :customers
     end
 
+    resources :tags do
+      post 'sort', on: :collection
+    end
+
     resources :dashboards
         
     resources :maps do 
       get ':action', on: :collection, as: 'action'
-    end
-        
+    end        
     resources :images
     resources :forms
-    resources :tables
     
     get ':action', controller: 'admin', on: :collection, as: 'action'
   end  
   
-  get '/', controller: 'admin', action: 'show'  
+  get ':controller/:action/:id'
+  
+  get '/', controller: 'pages', action: 'show'  
 end
