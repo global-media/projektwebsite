@@ -24,15 +24,24 @@
                                 <li>
                                     <%= link_to "Banners", admin_contents_banners_url %>
                                 </li>
+                                <!--li>
+                                    < %= link_to "News", admin_contents_news_index_url % >
+                                </li-->
                                 <li>
-                                    <%= link_to "News", admin_contents_news_index_url %>
+                                    <%= link_to "Comics", admin_contents_comics_url %>
+                                </li>
+                                <!--li>
+                                    < %= link_to "Episodes", admin_contents_episodes_url % >
                                 </li>
                                 <li>
-                                    <%= link_to "Galleries", admin_contents_galleries_url %>
+                                    <%= link_to "Images", admin_contents_images_url %>
+                                </li>
+                                <li>
+                                    < %= link_to "Galleries", admin_contents_galleries_url % >
                                 </li>
                                 <li>
                                     <%= link_to "Calender Events", admin_contents_events_url %>
-                                </li>
+                                </li-->
                                 <li>
                                     <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Categories'), admin_contents_categories_url %>
                                 </li>
@@ -56,21 +65,20 @@
                             </ul>
                         </li>
                         <li>
-                            <%= link_to raw('<i class="fa fa-table fa-fw"></i> Tables'), admin_tables_url %>
+                            <%= link_to raw('<i class="fa fa-table fa-fw"></i> Tags'), admin_tags_url %>
                         </li>
-                        <li>
-                            <%= link_to raw('<i class="fa fa-bar-chart-o fa-fw"></i> Maps<span class="fa arrow"></span>'), admin_maps_url %>
+                        <!--li>
+                            < %= link_to raw('<i class="fa fa-bar-chart-o fa-fw"></i> Maps<span class="fa arrow"></span>'), admin_maps_url % >
                             <ul class="nav nav-second-level">
-                                <!--li>
+                                <li>
                                     <  %= link_to "Flat Maps", {controller: 'maps', action: 'flat'} %  >
-                                </li-->
+                                </li>
                                 <li>
                                     <%= link_to "Google Maps", admin_maps_url %>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
                         </li>
-                        <!--li>
+                        <li>
                             <%= link_to raw('<i class="fa fa-edit fa-fw"></i> Forms'), admin_forms_url %>
                         </li>
                         <li>

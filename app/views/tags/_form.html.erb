@@ -1,0 +1,14 @@
+        <div class="form-group">
+            <label>Status</label>
+            <%= f.select :status_id, tag_status_options, {}, class: "form-control#{' error' unless @tag.errors[:status_id].blank?}" %>
+        </div>
+        <div class="form-group">
+            <label>Name</label>
+            <%= f.text_field :name, class: "form-control#{' error' unless @tag.errors[:name].blank?}", placeholder: 'Name' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
+        <div class="form-group">
+            <label>Type</label>
+            <%= f.text_field :type, class: "form-control#{' error' unless @tag.errors[:type].blank?}", placeholder: 'Type' %>
+            <!--p class="help-block">Example block-level help text here.</p-->
+        </div>
