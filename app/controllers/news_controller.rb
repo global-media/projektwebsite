@@ -1,5 +1,9 @@
 class NewsController < ApplicationController
   layout 'admin'
+  
+  def index
+    @news = News.all
+  end
 
   def new
     @news = News.new
@@ -15,18 +19,9 @@ class NewsController < ApplicationController
     flash[:error] = "We're sorry, we cannot create the news at the moment"
     render template: 'news/new'
   end
-  
-  def index
-    @news = News.all
-  end
-  
+
   def edit
     @news = News.find(params[:id])
-  end
-  
-  def destroy
-    News.find(params[:id]).destroy
-    redirect_to admin_contents_news_index_url
   end
   
   def update
@@ -40,6 +35,11 @@ class NewsController < ApplicationController
     render template: 'news/edit'
   end
   
+  def destroy
+    News.find(params[:id]).destroy
+    redirect_to admin_contents_news_index_url
+  end
+    
   # def sort
   #   News.sort!(params[:news][:sort])
   #   flash[:success] = 'News Sort success!'

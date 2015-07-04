@@ -1,6 +1,10 @@
 class BannersController < ApplicationController
   layout 'admin'
 
+  def index
+    @banners = Banner.all.order(:sort)
+  end
+  
   def new
     @banner = Banner.new
   end
@@ -16,19 +20,10 @@ class BannersController < ApplicationController
     render template: 'banners/new'
   end
   
-  def index
-    @banners = Banner.all.order(:sort)
-  end
-  
   def edit
     @banner = Banner.find(params[:id])
   end
-  
-  def destroy
-    Banner.find(params[:id]).destroy
-    redirect_to admin_contents_banners_url
-  end
-  
+
   def update
     @banner = Banner.find(params[:id])
     if @banner.update_attributes(banner_params)
@@ -38,6 +33,11 @@ class BannersController < ApplicationController
     @errors = @banner.errors
     flash[:error] = "We're sorry, we cannot update the banner at the moment"
     render template: 'banners/edit'
+  end
+  
+  def destroy
+    Banner.find(params[:id]).destroy
+    redirect_to admin_contents_banners_url
   end
   
   def sort

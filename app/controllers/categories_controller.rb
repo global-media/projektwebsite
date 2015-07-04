@@ -1,6 +1,10 @@
 class CategoriesController < ApplicationController
   layout 'admin'
   
+  def index
+    @categories = Category.all.order(:sort)
+  end
+
   def new
     @category = Category.new
   end
@@ -15,18 +19,9 @@ class CategoriesController < ApplicationController
     flash[:error] = "We're sorry, we cannot create the category at the moment"
     render template: 'categories/new'
   end
-  
-  def index
-    @categories = Category.all.order(:sort)
-  end
-  
+    
   def edit
     @category = Category.find(params[:id])
-  end
-  
-  def destroy
-    Category.find(params[:id]).destroy
-    redirect_to admin_contents_categories_url
   end
   
   def update
@@ -38,6 +33,11 @@ class CategoriesController < ApplicationController
     @errors = @category.errors
     flash[:error] = "We're sorry, we cannot update the category at the moment"
     render template: 'categories/edit'
+  end
+  
+  def destroy
+    Category.find(params[:id]).destroy
+    redirect_to admin_contents_categories_url
   end
   
   def sort

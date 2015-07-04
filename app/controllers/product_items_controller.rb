@@ -1,5 +1,9 @@
 class ProductItemsController < ApplicationController
   layout 'admin'
+  
+  def index
+    @product_items = ProductItem.where(product_id: params[:product_id]).order(:sort)
+  end
 
   def new
     @product_item = ProductItem.new
@@ -15,18 +19,9 @@ class ProductItemsController < ApplicationController
     flash[:error] = "We're sorry, we cannot create the product item at the moment"
     render template: 'product_items/new'
   end
-  
-  def index
-    @product_items = ProductItem.where(product_id: params[:product_id]).order(:sort)
-  end
-  
+
   def edit
     @product_item = ProductItem.where(id: params[:id], product_id: params[:product_id]).first
-  end
-  
-  def destroy
-    ProductItem.where(id: params[:id], product_id: params[:product_id]).first.destroy
-    redirect_to edit_admin_store_product_url(id: params[:product_id])
   end
   
   def update
@@ -38,6 +33,11 @@ class ProductItemsController < ApplicationController
     @errors = @product_item.errors
     flash[:error] = "We're sorry, we cannot update the product item at the moment"
     render template: 'product_items/edit'
+  end
+  
+  def destroy
+    ProductItem.where(id: params[:id], product_id: params[:product_id]).first.destroy
+    redirect_to edit_admin_store_product_url(id: params[:product_id])
   end
   
   def sort
