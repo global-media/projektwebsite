@@ -2,7 +2,7 @@ class NewsController < ApplicationController
   layout 'admin'
   
   def index
-    @news = News.all
+    @news = News.all.order(:sort)
   end
 
   def new
@@ -40,11 +40,11 @@ class NewsController < ApplicationController
     redirect_to admin_contents_news_index_url
   end
     
-  # def sort
-  #   News.sort!(params[:news][:sort])
-  #   flash[:success] = 'News Sort success!'
-  #   redirect_to admin_contents_news_index_url
-  # end
+  def sort
+    News.sort!(params[:news][:sort])
+    flash[:success] = 'News Sort success!'
+    redirect_to admin_contents_news_index_url
+  end
   
   protected
     
