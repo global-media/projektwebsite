@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   layout 'admin'
   
   def index
-    @events = Event.all
+    @events = Event.all.order(:sort)
   end
 
   def new
@@ -40,11 +40,11 @@ class EventsController < ApplicationController
     redirect_to admin_contents_events_url
   end
   
-  # def sort
-  #   Event.sort!(params[:event][:sort])
-  #   flash[:success] = 'Event Sort success!'
-  #   redirect_to admin_contents_events_url
-  # end
+  def sort
+    Event.sort!(params[:event][:sort])
+    flash[:success] = 'Event Sort success!'
+    redirect_to admin_contents_events_url
+  end
   
   protected
     

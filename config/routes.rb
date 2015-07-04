@@ -89,10 +89,18 @@ Rails.application.routes.draw do
         post 'sort', on: :collection
       end
       
-      # resources :news
-      # resources :episodes
-      # resources :galleries
-      # resources :events
+      resources :news do
+        post 'sort', on: :collection
+        resources :images, only: [:create, :destroy]
+      end
+      resources :galleries do
+        post 'sort', on: :collection
+        resources :images, only: [:create, :destroy]
+      end
+      resources :events do
+        post 'sort', on: :collection
+        resources :images, only: [:create, :destroy]
+      end
 
       resources :categories do
         post 'sort', on: :collection

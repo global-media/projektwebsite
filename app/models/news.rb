@@ -1,10 +1,27 @@
 class News < ActiveRecord::Base
-  has_one :category
+  include Sort
+
+  has_many :images, as: :content, inverse_of: :content, dependent: :destroy
+  has_many :tag_relations, as: :content, inverse_of: :content  
+  has_many :tags, through: :tag_relations
+    
+  validates_presence_of :title, :article
   
-  has_many :images
+  before_create :initialize_sort!
+  before_save :set_tags
   
-  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/system/defaults/no_image.png"
-  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  attr_accessor :tag_ids
   
-  validates_presence_of :title, :content
+  protected
+
+    def set_tags
+      return if tag_ids.nil?
+      self.tag_relations.to_a.each {|tr| tag_ids.include?(tr.tag_id.to_s) ? 
+                                          tag_ids.delete(tr.tag_id.to_s) :
+                                          tr.destroy}
+      tag_ids.each do |tag_id|
+        next if tag_id.blank?
+        self.tags << Tag.find(tag_id)
+      end
+    end
 end

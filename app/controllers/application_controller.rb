@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-  SITE_NAME = 'Kosmik'.freeze
-  SITE_ICON = 'ico.png'.freeze
-  SITE_LOGO = 'logo.png'.freeze
+  SITE_NAME = 'Default Admin'.freeze
+  SITE_ICON = ''.freeze
+  SITE_LOGO = ''.freeze
   
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
