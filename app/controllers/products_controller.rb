@@ -1,5 +1,9 @@
 class ProductsController < ApplicationController
   layout 'admin'
+  
+  def index
+    @products = Product.all.order(:sort)
+  end
 
   def new
     @product = Product.new
@@ -15,18 +19,9 @@ class ProductsController < ApplicationController
     flash[:error] = "We're sorry, we cannot create the product at the moment"
     render template: 'products/new'
   end
-  
-  def index
-    @products = Product.all.order(:sort)
-  end
-  
+
   def edit
     @product = Product.where(id: params[:id]).includes(:product_items).first
-  end
-  
-  def destroy
-    Product.find(params[:id]).destroy
-    redirect_to admin_store_products_url
   end
   
   def update
@@ -38,6 +33,11 @@ class ProductsController < ApplicationController
     @errors = @product.errors
     flash[:error] = "We're sorry, we cannot update the product at the moment"
     render template: 'products/edit'
+  end
+  
+  def destroy
+    Product.find(params[:id]).destroy
+    redirect_to admin_store_products_url
   end
   
   def sort

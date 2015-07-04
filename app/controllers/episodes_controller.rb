@@ -1,6 +1,11 @@
 class EpisodesController < ApplicationController
   layout 'admin'
 
+  def index
+    @comic = Comic.find(params[:comic_id])
+    @episodes = @comic.episodes.order(:sort)
+  end
+  
   def new
     @comic = Comic.find(params[:comic_id])
     @episode = Episode.new
@@ -16,11 +21,6 @@ class EpisodesController < ApplicationController
     @errors = @episode.errors
     flash[:error] = "We're sorry, we cannot create the episode at the moment"
     render template: 'episodes/new'
-  end
-  
-  def index
-    @comic = Comic.find(params[:comic_id])
-    @episodes = @comic.episodes.order(:sort)
   end
   
   def edit

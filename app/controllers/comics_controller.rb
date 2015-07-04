@@ -1,6 +1,10 @@
 class ComicsController < ApplicationController
   layout 'admin'
-
+  
+  def index
+    @comics = Comic.all.order(:sort)
+  end
+  
   def new
     @comic = Comic.new
   end
@@ -15,18 +19,9 @@ class ComicsController < ApplicationController
     flash[:error] = "We're sorry, we cannot create the comic at the moment"
     render template: 'comics/new'
   end
-  
-  def index
-    @comics = Comic.all.order(:sort)
-  end
-  
+
   def edit
     @comic = Comic.find(params[:id])
-  end
-  
-  def destroy
-    Comic.find(params[:id]).destroy
-    redirect_to admin_contents_comics_url
   end
   
   def update
@@ -40,6 +35,11 @@ class ComicsController < ApplicationController
     render template: 'comics/edit'
   end
   
+  def destroy
+    Comic.find(params[:id]).destroy
+    redirect_to admin_contents_comics_url
+  end
+    
   def sort
     Comic.sort!(params[:comic][:sort])
     flash[:success] = 'Comic Sort success!'
