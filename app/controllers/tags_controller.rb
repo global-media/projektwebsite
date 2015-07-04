@@ -1,6 +1,10 @@
 class TagsController < ApplicationController
   layout 'admin'
 
+  def index
+    @tags = Tag.all.order(:sort)
+  end
+  
   def new
     @tag = Tag.new
   end
@@ -16,17 +20,8 @@ class TagsController < ApplicationController
     render template: 'tags/new'
   end
   
-  def index
-    @tags = Tag.all.order(:sort)
-  end
-  
   def edit
     @tag = Tag.find(params[:id])
-  end
-  
-  def destroy
-    Tag.find(params[:id]).destroy
-    redirect_to admin_tags_url
   end
   
   def update
@@ -38,6 +33,11 @@ class TagsController < ApplicationController
     @errors = @tag.errors
     flash[:error] = "We're sorry, we cannot update the tag at the moment"
     render template: 'tags/edit'
+  end
+  
+  def destroy
+    Tag.find(params[:id]).destroy
+    redirect_to admin_tags_url
   end
   
   def sort

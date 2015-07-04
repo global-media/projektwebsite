@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   layout 'admin'
+  
+  def index
+    @users = User.all
+  end
 
   def new
     @user = User.new
@@ -15,20 +19,11 @@ class UsersController < ApplicationController
     flash[:error] = "We're sorry, we cannot create the user at the moment"
     render template: 'users/new'
   end
-  
-  def index
-    @users = User.all
-  end
-  
+
   def edit
     @user = User.find(params[:id])
   end
-  
-  def destroy
-    User.find(params[:id]).destroy
-    redirect_to admin_settings_users_url
-  end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
@@ -38,6 +33,11 @@ class UsersController < ApplicationController
     @errors = @user.errors
     flash[:error] = "We're sorry, we cannot update the user at the moment"
     render template: 'users/edit'
+  end
+  
+  def destroy
+    User.find(params[:id]).destroy
+    redirect_to admin_settings_users_url
   end
   
   # def sort

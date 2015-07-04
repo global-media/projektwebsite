@@ -40,7 +40,7 @@
   <div class="form-group form-md-line-input<%' has-error' unless @comic.errors[:publish_at].blank? %>">
 		<label class="col-md-2 control-label" for="form_control_1">Publish Date</label>
 		<div class="col-md-6">
-			<div class="input-group date date-picker">
+			<div class="input-group date form_datetime">
 				<%= f.text_field :publish_at, value: datetime_value(@comic.publish_at), class: "form-control#{' error' unless @comic.errors[:publish_at].blank?}", size: 16, readonly: 'readonly', placeholder: 'Select Publish Date' %>	
 				<span class="input-group-btn">
 				<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
@@ -52,7 +52,7 @@
   <div class="form-group form-md-line-input<%' has-error' unless @comic.errors[:retract_at].blank? %>">
 		<label class="col-md-2 control-label" for="form_control_1">Retract Date</label>
 		<div class="col-md-6">
-			<div class="input-group date date-picker">
+			<div class="input-group date form_datetime">
 				<%= f.text_field :retract_at, value: datetime_value(@comic.retract_at), class: "form-control#{' error' unless @comic.errors[:retract_at].blank?}", size: 16, readonly: 'readonly', placeholder: 'Select Retract Date' %>	
 				<span class="input-group-btn">
 				<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
