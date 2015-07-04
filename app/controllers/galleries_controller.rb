@@ -2,7 +2,7 @@ class GalleriesController < ApplicationController
   layout 'admin'
   
   def index
-    @galleries = Gallery.all
+    @galleries = Gallery.all.order(:sort)
   end
 
   def new
@@ -40,11 +40,11 @@ class GalleriesController < ApplicationController
     redirect_to admin_contents_galleries_url
   end
   
-  # def sort
-  #   Gallery.sort!(params[:gallery][:sort])
-  #   flash[:success] = 'Gallery Sort success!'
-  #   redirect_to admin_contents_galleries_url
-  # end
+  def sort
+    Gallery.sort!(params[:gallery][:sort])
+    flash[:success] = 'Gallery Sort success!'
+    redirect_to admin_contents_galleries_url
+  end
   
   protected
     

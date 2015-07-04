@@ -3,17 +3,14 @@ class CreateNews < ActiveRecord::Migration
     create_table :news do |t|
       t.string      :title
       t.string      :author
-      t.string      :photographer
       t.date        :date
-      t.string      :image_url
-      t.string      :description
+      t.string      :headline
       t.string      :keyword
-      t.text        :content
-      t.references  :category
+      t.text        :article
+      t.string      :link_url
+      t.integer     :sort
       t.datetime    :publish_at
       t.datetime    :retract_at
-      t.attachment  :image
-      t.integer     :category_id
       t.timestamps  null: false
     end
   end

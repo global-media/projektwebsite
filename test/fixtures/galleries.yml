@@ -2,12 +2,16 @@
 
 gallery1:
   id: 1
-  name: Name 1
+  title: Title 1
   description: This is description 1
-  image_url: http://www.google.com
+  photographer: Photographer 1
+  date_taken: 2015-01-01
+  sort: 1
   
 gallery2:
   id: 2
-  name: Name 2
+  title: Title 2
   description: This is description 2
-  image_url: http://www.yahoo.com
+  photographer: Photographer 2
+  date_taken: 2015-01-01
+  sort: 2

@@ -1,25 +1,27 @@
 class Gallery < ActiveRecord::Base
-  has_one :category
+  include Sort
+
+  has_many :images, as: :content, inverse_of: :content, dependent: :destroy
+  has_many :tag_relations, as: :content, inverse_of: :content  
+  has_many :tags, through: :tag_relations
+
+  validates_presence_of :title
   
-  has_many :images
+  before_create :initialize_sort!
+  before_save :set_tags
   
-  has_attached_file :image1, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/system/defaults/no_image.png"
-  validates_attachment_content_type :image1, :content_type => /\Aimage\/.*\Z/
-
-  has_attached_file :image2, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/system/defaults/no_image.png"
-  validates_attachment_content_type :image2, :content_type => /\Aimage\/.*\Z/
-
-  has_attached_file :image3, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/system/defaults/no_image.png"
-  validates_attachment_content_type :image3, :content_type => /\Aimage\/.*\Z/
+  attr_accessor :tag_ids
   
-  has_attached_file :image4, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/system/defaults/no_image.png"
-  validates_attachment_content_type :image4, :content_type => /\Aimage\/.*\Z/
+  protected
 
-  has_attached_file :image5, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/system/defaults/no_image.png"
-  validates_attachment_content_type :image5, :content_type => /\Aimage\/.*\Z/
-
-  has_attached_file :image6, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/system/defaults/no_image.png"
-  validates_attachment_content_type :image6, :content_type => /\Aimage\/.*\Z/
-
-  validates_presence_of :name
+    def set_tags
+      return if tag_ids.nil?
+      self.tag_relations.to_a.each {|tr| tag_ids.include?(tr.tag_id.to_s) ? 
+                                          tag_ids.delete(tr.tag_id.to_s) :
+                                          tr.destroy}
+      tag_ids.each do |tag_id|
+        next if tag_id.blank?
+        self.tags << Tag.find(tag_id)
+      end
+    end
 end
