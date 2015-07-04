@@ -10,6 +10,8 @@ class Order < ActiveRecord::Base
               2 => 'Processed',
               3 => 'Cancel'}.freeze
 
+  attr_accessor :freeze_discount
+  
   def status; STATUSES[status_id];  end
   
   def open!;    update_attribute(:status_id, Order.status_id?('Open'));  end
@@ -40,4 +42,18 @@ class Order < ActiveRecord::Base
     save
   end
   
+  def calculate!
+    calculate_subtotal!
+    calculate_discount! unless freeze_discount
+    self.total = subtotal - discount + tax + shipping
+    save!
+  end
+
+  def calculate_subtotal!
+    self.subtotal = items.inject(0) {|subtotal, i| subtotal += (i.original_price * i.quantity)}
+  end
+  
+  def calculate_discount!
+    self.discount = items.inject(0) {|discount, i| discount += (i.discount * i.quantity)}
+  end
 end

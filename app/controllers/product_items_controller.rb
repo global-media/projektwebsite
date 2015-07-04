@@ -1,5 +1,5 @@
 class ProductItemsController < ApplicationController
-  layout 'contents'
+  layout 'admin'
 
   def new
     @product_item = ProductItem.new
@@ -43,7 +43,7 @@ class ProductItemsController < ApplicationController
   def sort
     ProductItem.sort!(params[:product_item][:sort]) unless params[:product_item].blank? || params[:product_item][:sort].blank?
     flash[:success] = 'Product Item Sort success!'
-    redirect_to edit_admin_store_product_url(id: params[:product_id])
+    redirect_to edit_admin_store_product_url(id: params[:product_id], anchor: "items")
   end
   
   protected

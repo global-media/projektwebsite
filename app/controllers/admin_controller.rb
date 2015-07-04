@@ -22,7 +22,7 @@ class AdminController < ApplicationController
       redirect_to admin_url and return
     end
     flash[:error] = "We're sorry but we cannot sign up at the moment"
-    redirect_to action_admin_url(action: 'signup') and return
+    redirect_to action_admin_url(action: 'registration') and return
   end
   
   def authenticate
@@ -36,27 +36,13 @@ class AdminController < ApplicationController
     redirect_to action_admin_url(action: 'login') and return
   end
   
-  def profile
-    @user = User.find(session[:user]['id'])
-    render layout: 'settings'
+  def reset
+    redirect_to action_admin_url(action: 'login') and return
   end
   
-  def update_profile
-    user = User.find(user_params[:id])
-    if user.update_attributes(user_params)
-      flash[:success] = 'Profile Update success!'
-      redirect_to action_admin_url(action: 'profile') and return
-    end
-    flash[:error] = "We're sorry, we cannot update your profile at the moment"
-    render template: 'profile'
-  end
-  
+
   protected
-
-    def user_params
-      params.require(:user).permit!
-    end
-
+  
     def initialize_session(user)
       session[:user] = user.sanitize!
     end

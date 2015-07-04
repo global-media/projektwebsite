@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  layout 'contents'
+  layout 'admin'
   
   def new
     @category = Category.new

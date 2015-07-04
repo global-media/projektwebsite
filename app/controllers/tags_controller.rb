@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  layout 'contents'
+  layout 'admin'
 
   def new
     @tag = Tag.new

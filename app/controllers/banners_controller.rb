@@ -1,5 +1,5 @@
 class BannersController < ApplicationController
-  layout 'contents'
+  layout 'admin'
 
   def new
     @banner = Banner.new
