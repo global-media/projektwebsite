@@ -1,5 +1,5 @@
 class CollectionsController < ApplicationController
-  layout 'contents'
+  layout 'admin'
   
   def new
     @collection = Collection.new

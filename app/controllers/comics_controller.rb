@@ -1,5 +1,5 @@
 class ComicsController < ApplicationController
-  layout 'contents'
+  layout 'admin'
 
   def new
     @comic = Comic.new

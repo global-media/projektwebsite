@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  layout 'contents'
+  layout 'admin'
     
   def index
     @orders = Order.all
@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
       @order.shipping_address.update_attributes(shipping_address_params) &&
       @order.billing_address.update_attributes(billing_address_params) &&
       @order.update_items(order_item_params)
+      @order.calculate!
       flash[:success] = 'Order Update success!'
       redirect_to edit_admin_store_order_url and return
     end

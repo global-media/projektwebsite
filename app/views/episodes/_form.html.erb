@@ -1,40 +1,66 @@
-        <div class="form-group">
-            <label>Name</label>
-            <%= f.text_field :name, class: "form-control#{' error' unless @episode.errors[:name].blank?}", placeholder: 'Name' %>
-            <!--p class="help-block">Example block-level help text here.</p-->
-        </div>
-        <div class="form-group">
-            <label>Details</label>
-            <%= f.text_field :details, class: "form-control#{' error' unless @episode.errors[:details].blank?}", placeholder: 'Details' %>
-            <!--p class="help-block">Example block-level help text here.</p-->
-        </div>
-        <div class="form-group">
-            <label>Comic</label>
-            <%= f.select :comic_id, comic_options, {}, class: "form-control#{' error' unless @episode.errors[:comic_id].blank?}" %>
-        </div>
-        <div class="form-group">
-            <label>Publish Date</label>
-            <%= f.date_field :publish_at, class: "form-control#{' error' unless @episode.errors[:publish_at].blank?}" %>
-        </div>        
-        <div class="form-group">
-            <label>Retract Date</label>
-            <%= f.date_field :retract_at, class: "form-control#{' error' unless @episode.errors[:retract_at].blank?}" %>
-        </div>        
-        <div class="form-group">
-            <label>Image Upload</label>
-            <%= f.file_field :image, as: :file, class: "form-control#{' error' unless @episode.errors[:image].blank?}" %>
-        </div>        
-        <% unless @episode.new_record? || !@episode.image.exists? %>
-        <div class="form-group">
-            <label>Image Tag</label>
-            <%= image_tag @episode.image.url(:thumb) %>
-        </div>
-        <div class="form-group">
-            <label>Image Tag</label>
-            <%= image_tag @episode.image.url(:medium) %>
-        </div>
-        <div class="form-group">
-            <label>Image Tag</label>
-            <%= image_tag @episode.image.url %>
-        </div>
-        <% end %>
+<div class="form-body">
+  <%= f.hidden_field :comic_id, {value: params[:comic_id]} %>
+	<div class="form-group form-md-line-input<%' has-error' unless @episode.errors[:name].blank? %>">
+		<label class="col-md-2 control-label" for="form_control_1">Name</label>
+		<div class="col-md-10">
+      <%= f.text_field :name, class: "form-control#{' error' unless @episode.errors[:name].blank?}", placeholder: 'Enter Name', id: 'form_control_1' %>			
+      <div class="form-control-focus"></div>
+		</div>
+	</div>
+	<div class="form-group form-md-line-input<%' has-error' unless @episode.errors[:details].blank? %>">
+		<label class="col-md-2 control-label" for="form_control_1">Details</label>
+		<div class="col-md-10">
+      <%= f.text_field :details, class: "form-control#{' error' unless @episode.errors[:details].blank?}", placeholder: 'Enter Details', id: 'form_control_1' %>			
+      <div class="form-control-focus"></div>
+		</div>
+	</div>
+	<div class="form-group form-md-line-input<%' has-error' unless @comic.errors[:comic_id].blank? %>">
+		<label class="col-md-2 control-label" for="form_control_1">Comic</label>
+		<div class="col-md-10">
+      <%= f.select :comic_id, comic_options, {selected: params[:comic_id]}, class: "form-control input-xlarge select2me#{' error' unless @episode.errors[:comic_id].blank?}", "data-placeholder" => "Select Comic..." %>
+			<div class="form-control-focus">
+			</div>
+		</div>
+	</div>	
+  <div class="form-group form-md-line-input<%' has-error' unless @episode.errors[:publish_at].blank? %>">
+		<label class="col-md-2 control-label" for="form_control_1">Publish Date</label>
+		<div class="col-md-6">
+			<div class="input-group date date-picker">
+				<%= f.text_field :publish_at, value: datetime_value(@episode.publish_at), class: "form-control#{' error' unless @episode.errors[:publish_at].blank?}", size: 16, readonly: 'readonly', placeholder: 'Select Publish Date' %>	
+				<span class="input-group-btn">
+				<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+				</span>
+			</div>
+			<!-- /input-group -->
+		</div>
+	</div>
+  <div class="form-group form-md-line-input<%' has-error' unless @episode.errors[:retract_at].blank? %>">
+		<label class="col-md-2 control-label" for="form_control_1">Retract Date</label>
+		<div class="col-md-6">
+			<div class="input-group date date-picker">
+				<%= f.text_field :retract_at, value: datetime_value(@episode.retract_at), class: "form-control#{' error' unless @episode.errors[:retract_at].blank?}", size: 16, readonly: 'readonly', placeholder: 'Select Retract Date' %>	
+				<span class="input-group-btn">
+				<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+				</span>
+			</div>
+			<!-- /input-group -->
+		</div>
+	</div>
+	<!--div class="form-group form-md-line-input<%' has-error' unless @episode.errors[:image].blank? %>">
+		<label class="col-md-2 control-label" for="form_control_1">Image Upload</label>
+ 		<div class="col-md-6 fileinput fileinput-new" data-provides="fileinput">
+			<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+			  < %= image_tag @episode.image.url(:medium) %>
+			</div>
+			<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+			<div>
+				<span class="btn default btn-file">
+  				<span class="fileinput-new">Select image </span>
+  				<span class="fileinput-exists">Change </span>
+				  < %= f.file_field :image, as: :file, class: "form-control#{' error' unless @episode.errors[:image].blank?}" % >
+				</span>
+				<a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput">Remove </a>
+			</div>
+		</div>
+	</div-->
+</div>

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  layout 'contents'
+  layout 'admin'
   
   def new
     @event = Event.new

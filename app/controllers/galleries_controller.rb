@@ -1,5 +1,5 @@
 class GalleriesController < ApplicationController
-  layout 'contents'
+  layout 'admin'
   
   def new
     @gallery = Gallery.new

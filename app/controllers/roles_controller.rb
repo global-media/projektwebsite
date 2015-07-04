@@ -1,5 +1,5 @@
 class RolesController < ApplicationController
-  layout 'settings'
+  layout 'admin'
   
   def new
     @role = Role.new
