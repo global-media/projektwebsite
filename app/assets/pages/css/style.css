@@ -1,0 +1,269 @@
+/*orange kosmik FF9B4F*/
+/** Default **/
+html {
+	position: relative;
+	min-height: 100%;
+	font: normal 100% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	background: #fff;
+	color: #232323;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #0F141A;	
+	min-height: 100vh;
+}
+
+a, a:hover { color: #f06; text-decoration: none; }
+
+i { font: normal normal 1em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif; }
+
+b, strong, h1, h2, h3, h4, h5 { 
+	font: normal normal 1em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif; 
+}
+
+img {
+	display: inline-block;
+	width: 100%;
+	height: auto;
+}
+
+
+/** --- Navigation --- **/
+nav.navbar {
+	background: rgba(255, 255, 255, .3);
+	height: auto;
+	margin-bottom: 0;
+	border-radius: 0;
+	border-bottom: none;
+	box-shadow: 0 1px 5px rgba(0,0,0,0.17);
+}
+
+nav.navbar .navbar-header {
+	height: auto;
+}
+
+nav.navbar .navbar-brand {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	height: auto;
+}
+
+nav.navbar .navbar-brand img {
+	width: auto;
+	max-height: 40px;
+}
+
+nav.navbar .navbar-nav li {
+	margin: 0 15px;
+}
+
+nav.navbar .navbar-nav li a {
+	color: #fff;
+	font-family: "Open Sans", Arial, Helvetica, Geneva, sans-serif;
+	font-weight: bold;
+	border-bottom: 2px solid rgba(255, 255, 255, 0);
+	padding: 15px 0 5px;
+	margin-bottom: 10px;
+	-webkit-font-smoothing: antialiased;
+	-webkit-transition: 0.2s ease-in-out;
+	-moz-transition: 0.2s ease-in-out;
+	-o-transition: 0.2s ease-in-out;
+	transition: 0.2s ease-in-out;
+}
+
+nav.navbar .navbar-nav li a:hover,
+nav.navbar .navbar-nav li.active a {
+	color: #fff;
+	border-bottom: 2px solid #fff;
+}
+
+nav.navbar .navbar-nav li ul.dropdown-menu {
+	padding-top: 10px;
+	border: none;
+	background: rgba(255, 255, 255, .3);
+}
+
+nav.navbar .navbar-nav li ul.dropdown-menu li a {
+	color: #fff;
+	font-size: 0.9em;
+	padding: 0;
+}
+
+
+
+/** --- Home --- **/
+/* Slideshow */
+#slideshow {
+	padding: 0;
+	border-bottom: 5px solid #f06;
+	margin-bottom:40px;
+}
+
+#slideshow .carousel-control {
+	background: transparent;
+	width: 100px;
+}
+
+#slideshow .carousel-control span {
+	text-shadow: none;
+}
+
+#slideshow .carousel-indicators li {
+	background-color: #f06;
+	border-color: #f06;
+}
+
+#slideshow .carousel-indicators li.active {
+	background-color: #fff;
+	border-color: #fff;
+} 
+
+
+
+/** --- Footer --- **/
+footer {
+	width: 100%;
+	height: auto;
+	padding: 100px 0;
+	border-top: 5px solid #f06;
+	background-color: #f4f4f4;
+}
+
+footer h3 {
+	font: 1em "Open Sans", Arial, Helvetica, Geneva, sans-serif;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 15px;
+	color: #000;
+}
+
+footer ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+footer ul li,
+footer p {
+	font: .8em "Open Sans", Arial, Helvetica, Geneva, sans-serif;
+	margin-bottom: 10px;
+}
+
+footer ul li a {
+	font-family: "Open Sans", Arial, Helvetica, Geneva, sans-serif;
+	color: #222;
+}
+
+footer ul li i.fa {
+	font-size: 1.5em;
+	margin-right: 10px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+footer form .field-group {
+	margin-bottom: 1em;
+}
+
+footer form input[type="text"] {
+	width: 100%;
+	background-color: #fff;
+	border: 1px solid #cdcbcc;
+	padding: 10px;
+	font-size: .8em;
+}
+
+footer form input[type="submit"] {
+	background-color: #f06;
+	color: #fff;
+	font-family: "Open Sans","Myriad Pro",sans-serif;
+	text-transform: uppercase;
+	border: 1px solid #f06;
+	-webkit-font-smoothing: antialiased;
+	padding: 10px 15px;
+	font-size: .8em;
+}
+
+/* INDEX PAGE */
+.col-xs-15 {
+    width: 20%;
+    float: left;
+}
+@media (min-width: 768px) {
+.col-sm-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 992px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 1200px) {
+    .col-lg-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
+
+/* Comics */
+#wrapper .title {
+	margin-bottom: 30px;
+}
+
+#wrapper .title .line {
+	display: inline-block;
+	width: 80px;
+	height: 20px;
+	background-color: #f06;
+	vertical-align: middle;
+	margin-right: 20px;
+}
+
+#wrapper .title .line::after {
+	display: inline-block;
+	vertical-align: middle;
+	width: 0;
+	height: 0;
+	margin: 0;
+	padding: 0;
+	border-style: solid;
+	border-width: 20px 20px 0 0;
+	border-color: #f06 transparent transparent transparent;
+	content: '';
+	margin-left: 80px;
+	margin-top: -2px;
+}
+
+#wrapper .title h2 {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+	font: bold 1.4em "Open Sans","UniversLTStd55Roman",sans-serif;
+	-webkit-font-smoothing: antialiased;
+	line-height: 20px;
+	color: #f06;
+	margin-left: 10px;
+	text-align: left;
+	letter-spacing: 1px;
+}
+
+
+
+.comicBox {
+    margin-bottom: 30px;
+  	color: #fff;
+  text-align: left;
+}
+.infoText .comicName{
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #f06;
+}
