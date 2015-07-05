@@ -1,42 +1,103 @@
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Order ID #<%= @order.id %></h1>
+<%= render partial: 'orders/header', locals: {breadcrumbs: ["Order ID #{@order.id}"]} %>
+
+<%= form_for @order, {url: admin_store_order_url, role: 'form', method: 'put', multipart: true, html: {class: 'form-horizontal'}} do %>
+
+<div class="row">
+	<div class="col-md-11">
+    <%= button_tag 'Update Order', type: 'submit', class: "btn btn-primary pull-right" %>
+  </div>
+  <div class="col-md-1">
+    <%= button_tag 'Reset', class: "btn btn-default pull-right", type: 'reset' %>
+  </div>
+</div>
+
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN SAMPLE FORM PORTLET-->
+		<div class="portlet">
+			<div class="portlet-body form">
+          
+        <!-- BEGIN PAGE CONTENT-->
+        <div class="row">
+        	<div class="col-md-12">
+        		<!-- BEGIN SAMPLE TABLE PORTLET-->
+        		<div class="portlet">
+        			<div class="portlet-title">
+        				<div class="caption">
+        					<i class="fa fa-shopping-cart"></i>Order ID #<%= @order.id %></h1>
+        				</div>
+        				<div class="tools">
+        				  <a class="fullscreen" href="javascript:;" data-original-title="" title=""></a>
+             			<a href="javascript:;" class="collapse"></a>
+        				</div>
+        			</div>
+        			<div class="portlet-body">
+          			  
+                <%= render partial: 'form_order', locals: {readonly: false} %>
+
+        			</div>
+        		</div>
+        		<!-- END SAMPLE TABLE PORTLET-->
+        	</div>
         </div>
-        <!-- /.col-lg-12 -->
-    </div>    
-    <!-- /.row -->
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-              <%= form_tag admin_store_order_url(id: @order.id), role: 'form', method: 'put', multipart: true do |f| %>
-                <div class="panel-body">
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <%= hidden_field_tag "order[id]", @order.id %>
-                        <%= render partial: 'form' %>
-                      </div>
-                      <!-- /.col-lg-6 (nested) -->
-                    </div>
-                    <!-- /.row (nested) -->
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <h2>Order Items</h2>
-                        <% @order.items.each_with_index do |order_item, i| %>
-                          <%= render partial: 'form_items_edit', locals: {order_item: order_item} %>
-                        <% end %>
-                        <%= button_tag 'Update Order', type: 'submit', class: "btn btn-warning" %>
-                        <%= button_tag 'Reset', url: admin_store_orders_url, class: "btn btn-default", method: 'get', type: 'reset' %>
-                      </div>
-                    </div>
-                </div>
-                <!-- /.panel-body -->
-                <% end %>                
-                <!--%= render partial: 'orders/items_index' %-->
-            </div>
-            <!-- /.panel -->
+        <!-- END PAGE CONTENT-->
+
+        <!-- BEGIN PAGE CONTENT-->
+        <div class="row">
+        	<div class="col-md-12">
+        		<!-- BEGIN SAMPLE TABLE PORTLET-->
+        		<div class="portlet">
+        			<div class="portlet-title">
+        				<div class="caption">
+        					<i class="fa fa-map-marker"></i>Shipping Address
+        				</div>
+        				<div class="tools">
+        				  <a class="fullscreen" href="javascript:;" data-original-title="" title=""></a>
+             			<a href="javascript:;" class="collapse"></a>
+        				</div>
+        			</div>
+        			<div class="portlet-body">
+
+                <%= render partial: 'form_address', locals: {address_type: 'shipping_address', title: 'Shipping Address', readonly: false} %>
+
+        			</div>
+        		</div>
+        		<!-- END SAMPLE TABLE PORTLET-->
+        	</div>
         </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <!-- /.row -->
+        <!-- END PAGE CONTENT-->
+
+        <!-- BEGIN PAGE CONTENT-->
+        <div class="row">
+        	<div class="col-md-12">
+        		<!-- BEGIN SAMPLE TABLE PORTLET-->
+        		<div class="portlet">
+        			<div class="portlet-title">
+        				<div class="caption">
+        					<i class="fa fa-map-marker"></i>Billing Address
+        				</div>
+        				<div class="tools">
+        				  <a class="fullscreen" href="javascript:;" data-original-title="" title=""></a>
+             			<a href="javascript:;" class="collapse"></a>
+        				</div>
+        			</div>
+        			<div class="portlet-body">
+        
+                <%= render partial: 'form_address', locals: {address_type: 'billing_address', title: 'Billing Address', readonly: false} %>
+        			</div>
+        		</div>
+        		<!-- END SAMPLE TABLE PORTLET-->
+        	</div>
+        </div>
+        <!-- END PAGE CONTENT-->
+        
+        <%= render partial: 'orders/items_edit' %>
+                
+			</div>
+		</div>
+		<!-- END SAMPLE FORM PORTLET-->
+	</div>
+</div>
+<!-- END PAGE CONTENT-->
+<% end %>

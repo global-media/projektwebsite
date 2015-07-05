@@ -1,5 +1,9 @@
 class CustomersController < ApplicationController
-  layout 'contents'
+  layout 'admin'
+
+  def index
+    @customers = Customer.all
+  end
 
   def new
     @customer = Customer.new
@@ -15,20 +19,11 @@ class CustomersController < ApplicationController
     flash[:error] = "We're sorry, we cannot create the customer at the moment"
     render template: 'customers/new'
   end
-  
-  def index
-    @customers = Customer.all
-  end
-  
+
   def edit
     @customer = Customer.find(params[:id])
   end
-  
-  def destroy
-    Customer.find(params[:id]).destroy
-    redirect_to admin_store_customers_url
-  end
-  
+
   def update
     @customer = Customer.find(params[:id])
     if @customer.update_attributes(customer_params)
@@ -38,6 +33,11 @@ class CustomersController < ApplicationController
     @errors = @customer.errors
     flash[:error] = "We're sorry, we cannot update the customer at the moment"
     render template: 'customers/edit'
+  end
+
+  def destroy
+    Customer.find(params[:id]).destroy
+    redirect_to admin_store_customers_url
   end
   
   # def sort

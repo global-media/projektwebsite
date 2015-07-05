@@ -1,6 +1,10 @@
 class GalleriesController < ApplicationController
-  layout 'contents'
+  layout 'admin'
   
+  def index
+    @galleries = Gallery.all.order(:sort)
+  end
+
   def new
     @gallery = Gallery.new
   end
@@ -15,18 +19,9 @@ class GalleriesController < ApplicationController
     flash[:error] = "We're sorry, we cannot create the gallery at the moment"
     render template: 'galleries/new'
   end
-  
-  def index
-    @galleries = Gallery.all
-  end
-  
+
   def edit
     @gallery = Gallery.find(params[:id])
-  end
-  
-  def destroy
-    Gallery.find(params[:id]).destroy
-    redirect_to admin_contents_galleries_url
   end
   
   def update
@@ -40,11 +35,16 @@ class GalleriesController < ApplicationController
     render template: 'galleries/edit'
   end
   
-  # def sort
-  #   Gallery.sort!(params[:gallery][:sort])
-  #   flash[:success] = 'Gallery Sort success!'
-  #   redirect_to admin_contents_galleries_url
-  # end
+  def destroy
+    Gallery.find(params[:id]).destroy
+    redirect_to admin_contents_galleries_url
+  end
+  
+  def sort
+    Gallery.sort!(params[:gallery][:sort])
+    flash[:success] = 'Gallery Sort success!'
+    redirect_to admin_contents_galleries_url
+  end
   
   protected
     

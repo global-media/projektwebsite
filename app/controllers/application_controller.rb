@@ -1,14 +1,22 @@
 class ApplicationController < ActionController::Base
+  SITE_NAME = 'Default Admin'.freeze
+  SITE_ICON = ''.freeze
+  SITE_LOGO = ''.freeze
+  
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :authorize, except: [:login, :logout, :authenticate, :help, :register, :signup]
+  before_filter :authorize, except: [:login, :logout, :authenticate, :help, :register, :registration, :forgot, :reset]
   
-  before_filter :validate_permission, except: [:profile, :login, :logout, :authenticate, :help, :register, :signup]
+  before_filter :validate_permission, except: [:profile, :login, :logout, :authenticate, :help, :register, :registration, :forgot, :reset]
   
   protected
     
+    def user_params
+      params.require(:user).permit!
+    end
+  
     def authorize
       if !logged_in?
         redirect_to action_admin_url(action: 'login') and return

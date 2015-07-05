@@ -65,9 +65,10 @@ Rails.application.routes.draw do
     
     post 'login', controller: 'admin', action: 'authenticate', on: :collection
     post 'signup', controller: 'admin', action: 'register', on: :collection
-    post 'profile', controller: 'admin', action: 'update_profile', on: :collection
+    post 'forgot', controller: 'admin', action: 'reset', on: :collection
     
     resource :settings do 
+      resource :profiles, except: [:new, :edit, :create, :destroy]
       resources :users
       resources :roles do
         post 'sort', on: :collection
@@ -75,15 +76,32 @@ Rails.application.routes.draw do
       get ':action', on: :collection, as: 'action'
     end
     
-    
     resource :contents do
       resources :banners do
         post 'sort', on: :collection
       end
       
-      resources :news
-      resources :galleries
-      resources :events
+      resources :comics do
+        resources :episodes do
+          post 'sort', on: :collection
+          resources :images, only: [:create, :destroy]
+        end
+        post 'sort', on: :collection
+      end
+      
+      resources :news do
+        post 'sort', on: :collection
+        resources :images, only: [:create, :destroy]
+      end
+      resources :galleries do
+        post 'sort', on: :collection
+        resources :images, only: [:create, :destroy]
+      end
+      resources :events do
+        post 'sort', on: :collection
+        resources :images, only: [:create, :destroy]
+      end
+
       resources :categories do
         post 'sort', on: :collection
       end
@@ -92,7 +110,8 @@ Rails.application.routes.draw do
     resource :store, controller: 'store' do
       resources :products do 
         post 'sort', on: :collection
-        get ':action', on: :collection, as: 'action'
+        # get ':action', on: :collection, as: 'action'
+        resources :images, only: [:create, :destroy]
         resources :product_items, as: 'items' do
           post 'sort', on: :collection
         end
@@ -113,18 +132,21 @@ Rails.application.routes.draw do
       resources :customers
     end
 
+    resources :tags do
+      post 'sort', on: :collection
+    end
+
     resources :dashboards
         
-    resources :maps do 
-      get ':action', on: :collection, as: 'action'
-    end
-        
-    resources :images
-    resources :forms
-    resources :tables
+    # resources :maps do 
+    #   get ':action', on: :collection, as: 'action'
+    # end        
+    # resources :forms
     
     get ':action', controller: 'admin', on: :collection, as: 'action'
   end  
   
-  get '/', controller: 'admin', action: 'show'  
+  get ':controller/:action/:id'
+  
+  get '/', controller: 'pages', action: 'show'  
 end

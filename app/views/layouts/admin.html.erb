@@ -1,104 +1,69 @@
 <!DOCTYPE html>
+
+  <%= render partial: 'layouts/license' %>
+  
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
 <html lang="en">
+<!--<![endif]-->
 
-<head>
+  <%= render partial: 'layouts/header' %>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <!-- BEGIN BODY -->
+  <!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
+  <!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
+  <!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
+  <!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
+  <!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
+  <!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
+  <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
+  <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
+  <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+  <body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid">
+  <!-- BEGIN HEADER -->
+  <div class="page-header navbar navbar-fixed-top">
+  	<!-- BEGIN HEADER INNER -->
+  	<div class="page-header-inner">
+  		<!-- BEGIN LOGO -->
+  		<div class="page-logo">
 
-    <title>CMS Admin</title>
+  			<% if !ApplicationController::SITE_LOGO.blank? %><a href="/admin"><img src="/<%= ApplicationController::SITE_LOGO %>" alt="logo" class="logo-default" style="width:50%; height:70%"/></a><% else %><a href="/admin" class="navbar-brand"><%= ApplicationController::SITE_NAME %></a><% end %>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="/assets/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Timeline CSS -->
-    <link href="/assets/dist/css/timeline.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="/assets/dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="/assets/bower_components/morrisjs/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="/assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-		<!--[if lt IE 9]>
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<link href="/assets/styles.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-    <script src="/assets/sorttable.js"></script>
-    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://johnny.github.io/jquery-sortable/js/jquery-sortable.js"></script-->
-    
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-    
-</head>
-
-<body>
-
-    <div id="wrapper">
-          
-        <%= render partial: 'layouts/admin_navigation' %>
-        
-        <div id="page-wrapper">
-        
-          <div class="modal-header">
-              <% if flash[:success] %><div class="success"><%= flash[:success] %></div><% end %>
-              <% if flash[:error] %>
-                <div class="error">
-                  <b><%= flash[:error] %></b>
-                  <% unless @errors.blank? %>
-                  <ul>
-                    <% @errors.full_messages.each do |error_message| %>
-                      <li><%= error_message %></li>
-                    <% end %>
-                  </ul>
-                  <% end %>
-                </div>
-              <% end %>
-          </div>      
-
-        <%= yield %>
-
-        </div>
-        <!-- /#page-wrapper -->
+  			<div class="menu-toggler sidebar-toggler">
+  				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+  			</div>        
+  		</div>
+  		<!-- END LOGO -->
       
+      <!-- %= render partial: 'layouts/top_navigation' % -->
+
+  	</div>
+  	<!-- END HEADER INNER -->
+  </div>
+  <!-- END HEADER -->
+  <div class="clearfix">
+  </div>
+  <!-- BEGIN CONTAINER -->
+  <div class="page-container">
+    
+    <%= render partial: 'layouts/sidebar_navigation' %>
+  	
+    <!-- BEGIN CONTENT -->
+    <div class="page-content-wrapper">
+    	<div class="page-content">
+					    
+        <%= yield %>
+      
+    	</div>
     </div>
-    <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="/assets/bower_components/jquery/dist/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="/assets/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="/assets/bower_components/raphael/raphael-min.js"></script>
-    <script src="/assets/bower_components/morrisjs/morris.min.js"></script>
-    <script src="/assets/js/morris-data.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="/assets/dist/js/sb-admin-2.js"></script>
+    <!-- END CONTENT -->
+        
+  </div>
+  <!-- END CONTAINER -->
+  
+  <%= render partial: 'layouts/footer' %>
 
 </body>
-
+<!-- END BODY -->
 </html>

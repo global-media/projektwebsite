@@ -1,5 +1,9 @@
 class RolesController < ApplicationController
-  layout 'settings'
+  layout 'admin'
+  
+  def index
+    @roles = Role.all.order(:sort)
+  end
   
   def new
     @role = Role.new
@@ -15,18 +19,9 @@ class RolesController < ApplicationController
     flash[:error] = "We're sorry, we cannot create the role at the moment"
     render template: 'roles/new'
   end
-  
-  def index
-    @roles = Role.all.order(:sort)
-  end
-  
+
   def edit
     @role = Role.find(params[:id])
-  end
-  
-  def destroy
-    Role.find(params[:id]).destroy
-    redirect_to admin_settings_roles_url
   end
   
   def update
@@ -38,6 +33,11 @@ class RolesController < ApplicationController
     @errors = @role.errors
     flash[:error] = "We're sorry, we cannot update the role at the moment"
     render template: 'roles/edit'
+  end
+  
+  def destroy
+    Role.find(params[:id]).destroy
+    redirect_to admin_settings_roles_url
   end
   
   def sort

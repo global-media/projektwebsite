@@ -1,5 +1,9 @@
 class CollectionsController < ApplicationController
-  layout 'contents'
+  layout 'admin'
+
+  def index
+    @collections = Collection.all.order(:sort)
+  end
   
   def new
     @collection = Collection.new
@@ -15,18 +19,9 @@ class CollectionsController < ApplicationController
     flash[:error] = "We're sorry, we cannot create the collection at the moment"
     render template: 'collections/new'
   end
-  
-  def index
-    @collections = Collection.all.order(:sort)
-  end
-  
+    
   def edit
     @collection = Collection.find(params[:id])
-  end
-  
-  def destroy
-    Collection.find(params[:id]).destroy
-    redirect_to admin_store_collections_url
   end
   
   def update
@@ -38,6 +33,11 @@ class CollectionsController < ApplicationController
     @errors = @collection.errors
     flash[:error] = "We're sorry, we cannot update the collection at the moment"
     render template: 'collections/edit'
+  end
+  
+  def destroy
+    Collection.find(params[:id]).destroy
+    redirect_to admin_store_collections_url
   end
   
   def sort

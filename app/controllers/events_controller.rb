@@ -1,6 +1,10 @@
 class EventsController < ApplicationController
-  layout 'contents'
+  layout 'admin'
   
+  def index
+    @events = Event.all.order(:sort)
+  end
+
   def new
     @event = Event.new
   end
@@ -15,18 +19,9 @@ class EventsController < ApplicationController
     flash[:error] = "We're sorry, we cannot create the event at the moment"
     render template: 'events/new'
   end
-  
-  def index
-    @events = Event.all
-  end
-  
+
   def edit
     @event = Event.find(params[:id])
-  end
-  
-  def destroy
-    Event.find(params[:id]).destroy
-    redirect_to admin_contents_events_url
   end
   
   def update
@@ -40,11 +35,16 @@ class EventsController < ApplicationController
     render template: 'events/edit'
   end
   
-  # def sort
-  #   Event.sort!(params[:event][:sort])
-  #   flash[:success] = 'Event Sort success!'
-  #   redirect_to admin_contents_events_url
-  # end
+  def destroy
+    Event.find(params[:id]).destroy
+    redirect_to admin_contents_events_url
+  end
+  
+  def sort
+    Event.sort!(params[:event][:sort])
+    flash[:success] = 'Event Sort success!'
+    redirect_to admin_contents_events_url
+  end
   
   protected
     
