@@ -2,7 +2,7 @@ class NewsController < ApplicationController
   layout 'admin'
   
   def index
-    @news = News.all.order(:sort)
+    @news_items = News.all.order(:sort)
   end
 
   def new
