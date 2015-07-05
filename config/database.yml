@@ -15,15 +15,15 @@ default: &default
 
 development:
   <<: *default
-  database: projektwebsite_development
+  database: kosmik_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: projektwebsite_test
+  database: kosmik_test
 
 production:
   <<: *default
-  database: projektwebsite_production
+  database: kosmik_production
