@@ -86,6 +86,8 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     rack (1.6.1)
+    rack-recaptcha (0.6.6)
+      json
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.1)
@@ -160,6 +162,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   paperclip
+  rack-recaptcha
   rails (= 4.2.1)
   rmagick
   sass-rails (~> 5.0)
