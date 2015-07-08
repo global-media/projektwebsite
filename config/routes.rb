@@ -136,6 +136,11 @@ Rails.application.routes.draw do
       post 'sort', on: :collection
     end
 
+    resource :mailings do
+      resources :campaigns, controller: 'mailing_campaigns'
+      resources :lists, controller: 'mailing_lists'
+    end
+    
     resources :dashboards
         
     # resources :maps do 
@@ -145,6 +150,8 @@ Rails.application.routes.draw do
     
     get ':action', controller: 'admin', on: :collection, as: 'action'
   end  
+  
+  post 'mailing_lists/signup', controller: 'mailing_lists', action: 'signup'
   
   get ':controller/:action/:id'
   

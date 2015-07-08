@@ -40,7 +40,7 @@
   	<div class="form-group form-md-line-input<%' has-error' unless @order.send(address_type).errors[:country].blank? %>">
   		<label class="col-md-2 control-label" for="form_control_1">Country</label>
   		<div class="col-md-10">
-        <%= select_tag "shipping_address[country]", options_for_select(country_options, @order.send(address_type).country), {class: "form-control input-xlarge select2me#{' error' unless @order.shipping_address.errors[:country].blank?}", disabled: readonly, "data-placeholder" => "Select Country..."} %>
+        <%= select_tag "#{address_type}[country]", options_for_select(country_options, @order.send(address_type).country), {class: "form-control input-xlarge select2me#{' error' unless @order.send(address_type).errors[:country].blank?}", disabled: readonly, "data-placeholder" => "Select Country..."} %>
         <div class="form-control-focus"></div>
   		</div>
   	</div>

@@ -21,6 +21,10 @@ module Projektwebsite
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    
+    config.gem 'rack-recaptcha', :lib => 'rack/recaptcha'
+    config.middleware.use Rack::Recaptcha, :public_key => ENV['RECAPTCHA_PUBLIC_KEY'], :private_key => ENV['RECAPTCHA_PRIVATE_KEY']
+    
     config.active_record.raise_in_transactional_callbacks = true
     
 	  config.autoload_paths << Rails.root.join('lib')
