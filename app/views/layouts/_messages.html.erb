@@ -6,7 +6,12 @@
     <ul>
       <% @errors.full_messages.each do |error_message| %>
         <li><%= error_message %></li>
-      <% end %>
+      <% end if @errors.kind_of?(ActiveModel::Errors) %>
+      <% @errors.each do |column, errors| %>
+        <% errors.each do |error| %>
+          <li><%= "#{column.capitalize} #{error}" %></li>
+        <% end %>
+      <% end if @errors.kind_of?(Hash) %>
     </ul>
     <% end %>
 	</div>

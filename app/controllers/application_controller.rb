@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Rack::Recaptcha::Helpers
+
   SITE_NAME = 'Kosmik'.freeze
   SITE_ICON = 'ico.png'.freeze
   SITE_LOGO = 'logo.png'.freeze
@@ -7,9 +9,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :authorize, except: [:login, :logout, :authenticate, :help, :register, :registration, :forgot, :reset]
+  before_filter :authorize, except: [:login, :logout, :authenticate, :help, :register, :registration, :forgot, :reset, :signup]
   
-  before_filter :validate_permission, except: [:profile, :login, :logout, :authenticate, :help, :register, :registration, :forgot, :reset]
+  before_filter :validate_permission, except: [:profile, :login, :logout, :authenticate, :help, :register, :registration, :forgot, :reset, :signup]
   
   protected
     

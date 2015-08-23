@@ -1,8 +1,7 @@
 class Comic < ActiveRecord::Base
   include Sort
   
-  has_many :images
-  has_many :episodes
+  has_many :episodes, dependent: :destroy
   belongs_to :category
   
   has_many :tag_relations, as: :content, inverse_of: :content

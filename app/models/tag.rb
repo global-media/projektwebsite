@@ -10,7 +10,7 @@ class Tag < ActiveRecord::Base
               3 => 'Hidden'}.freeze
   
   TYPES = {'store'    => 'Store', 
-            'content' => 'Content'}
+            'content' => 'Content'}.freeze
   
   before_create :initialize_sort!
   

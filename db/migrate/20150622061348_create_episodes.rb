@@ -5,7 +5,6 @@ class CreateEpisodes < ActiveRecord::Migration
       t.text        :details
       t.belongs_to  :comic
       t.integer     :sort
-      t.attachment  :image
       t.datetime    :publish_at
       t.datetime    :retract_at
       t.timestamps  null: false
