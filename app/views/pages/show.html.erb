@@ -1,141 +1,35 @@
-<nav class="navbar navbar-default navbar-fixed-top"><!-- Navbar -->
-	<div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="/">
-				<img src="/assets/img/logo.png" alt="" />
-			</a>
-		</div>
-		
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a href="/pages/catalog">Catalog</a></li>
-				<li><a href="/pages/creator">Creator</a></li>
-				<li><a href="#">Shop</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user"></i></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">Reading List</a></li>
-						<li><a href="#">Wallet</a></li>
-						<li><a href="#">Settings</a></li>
-					</ul>
-				</li>
-				<li><a href="#"><i class="fa fa-search"></i></a></li>
-			</ul>
-		</div><!-- /.navbar-collapse -->
-	</div><!-- /.container-fluid -->
-</nav><!-- ./Navbar -->
-
-
-
 <div id="slideshow" class="container-fluid"><!-- Slideshow -->
-
   <%= banners %>
-  
 </div><!-- ./Slideshow -->
-
 
 <!-- Page Content -->
 <div id="wrapper" class="container">
 
-<!-- LATEST Section -->
-<div class="row">
-	<div class="col-md-12 title">
-		<span class="line"></span>
-		<h2>LATEST</h2>
+  <!-- LATEST Section -->
+  <div class="row no-gutters">
+  	<div class="col-md-12 title">
+  		<span class="line"></span>
+  		<h2>LATEST</h2>
 		
-		<span class="catalogBtn floatRight"><a href="/pages/catalog">See all <i class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i></a></span>
-	</div>
-
-	<%= episodes mode: 'latest', view: 'homepage' %>
-
-</div>
-<!-- /.row -->
-<!-- POPULAR Section -->
-<div class="row">
-	<div class="col-md-12 title">
-		<span class="line"></span>
-		<h2>Popular</h2>
-	</div>
-
-	<%= episodes mode: 'popular', view: 'homepage' %>
-
-</div>
-<!-- /.row -->
-<!-- PREMIUM Section -->
-<div class="row">
-	<div class="col-md-12 title">
-		<span class="line"></span>
-		<h2>Premium</h2>
-	</div>	
+  		<span class="catalogBtn floatRight"><%= link_to(raw('See all <i class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i>'), catalogs_all_url) %></span>
+  	</div>
 	
-	<%= episodes mode: 'premium', view: 'homepage', max: 4, class: 'col-md-3 col-sm-6' %>
-  
-</div>
-<!-- /.row -->
+  	<%= episodes mode: 'latest' %>
+
+  </div>
+  <!-- /.row -->
+
+  <!-- POPULAR Section -->
+  <div class="row">
+  	<div class="col-md-12 title">
+  		<span class="line"></span>
+  		<h2>Popular</h2>
+  	</div>
+	
+  	<%= episodes mode: 'popular' %>
+
+    </div>
+  <!-- /.row -->
+
 </div>
 <!-- /.wrapper -->
-<a name="footer"></a> 
-
-<footer><!-- Footer -->
-	<div class="container">
-    <%= render partial: 'layouts/messages' %>
-		
-		<div class="col-md-3">
-			<h3>Kosmik</h3>
-			<ul>
-				<li><a href="#">About Kosmik</a></li>
-				<li><a href="#">F.A.Q</a></li>
-				<li><a href="#">market</a></li>
-			</ul>
-		</div>
-		
-		<div class="col-md-3">
-			<h3>Download Apps</h3>
-			<ul>
-				<li><a href="#"><i class="fa fa-android"></i> Android Apps</a></li>
-				<li><a href="#"><i class="fa fa-apple"></i> IOS Apps</a></li>
-			</ul>
-		</div>
-		
-		<div class="col-md-3">
-			<h3>Kontak Kosmik</h3>
-			<ul>
-				<li><i class="fa fa-phone"></i>(021) xxx xxx xx</li>
-				<li><i class="fa fa-envelope"></i><a href="#">info@kosmik.co.id</a></li>
-				<li><i class="fa fa-map-marker"></i>Alamat kosmik <a href="#" class="map">(KOSMIK Map)</a></li>
-			</ul>
-		</div>
-		
-		<div class="col-md-3">
-			<h3>Newsletter</h3>
-			<p>Daftar dan dapatkan informasi promo dan Comic terbaru kosmik setiap minggunya</p>
-			<!-- BEGIN FORM-->
-			<%= form_tag mailing_lists_signup_url, method: 'post', class: "ng-pristine ng-valid" do %>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="field-group">
-  						<%= text_field_tag "mailing_list[email]", nil, class: "form-control", placeholder: 'Enter Email' %>
-						</div> <!-- end field-group -->
-    				<div class="g-recaptcha" data-sitekey="<%= ENV['RECAPTCHA_PUBLIC_KEY'] %>"></div>
-						<div class="field-group">
-							<input type="submit" class="btn-primary form subcribe" value="Subscribe !">
-						</div> <!-- end field-group -->
-					</div>
-				</div>
-			<% end %>
-			<!-- END FORM-->
-		</div>
-		
-	</div>
-</footer><!-- ./Footer -->

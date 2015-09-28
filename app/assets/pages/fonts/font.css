@@ -1,1 +1,29 @@
-aaa
+@font-face {
+	font-family: 'DINNextRoundedLTPro_Medium';
+	src: url('DINNextRoundedLTPro-Medium.eot');
+	src: url('DINNextRoundedLTPro-Medium.eot?#iefix') format('embedded-opentype'),
+		url('DINNextRoundedLTPro-Medium.woff') format('woff'),
+		url('DINNextRoundedLTPro-Medium.ttf')  format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'DINNextRoundedLTPro_Light';
+	src: url('DINNextRoundedLTPro-Light.eot');
+	src: url('DINNextRoundedLTPro-Light.eot?#iefix') format('embedded-opentype'),
+		url('DINNextRoundedLTPro-Light.woff') format('woff'),
+		url('DINNextRoundedLTPro-Light.ttf')  format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'DINNextRoundedLTPro_Bold';
+	src: url('DINNextRoundedLTPro-Bold.eot');
+	src: url('DINNextRoundedLTPro-Bold.eot?#iefix') format('embedded-opentype'),
+		url('DINNextRoundedLTPro-Bold.woff') format('woff'),
+		url('DINNextRoundedLTPro-Bold.ttf')  format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}

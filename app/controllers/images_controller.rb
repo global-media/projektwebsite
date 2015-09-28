@@ -1,12 +1,16 @@
 class ImagesController < ApplicationController
+  include Sort
+  
   layout 'admin'
   
   def create    
     @image = Image.new({image: params[:image], content_id: content_id, content_type: content_type})
     if @image.save
       render :json => { :files => [{
+                                    "image_id" => @image.id,
                                     "name" => @image.image_file_name,
                                     "size" => @image.image_file_size,
+                                    "sort" => @image.sort,
                                     "url" => @image.image.url,
                                     "thumbnail_url" => @image.image.url(:thumb),
                                     "delete_url" => delete_url,
@@ -19,6 +23,12 @@ class ImagesController < ApplicationController
   
   def destroy
     @image = Image.find(params[:id]).destroy
+    redirect_to redirect_url
+  end
+  
+  def sort
+    Image.sort!(episode_params[:sort])
+    flash[:success] = 'Image Sort success!'
     redirect_to redirect_url
   end
   
@@ -76,5 +86,9 @@ class ImagesController < ApplicationController
       when 'episodes';  edit_admin_contents_comic_episode_url(id: content_id, anchor: "images")
       when 'galleries';  edit_admin_contents_gallery_url(id: content_id, anchor: "images")
       end
+    end
+    
+    def episode_params
+      params.require(:episode).permit!
     end
 end

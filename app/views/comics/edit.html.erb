@@ -3,11 +3,10 @@
 <%= form_for @comic, {url: admin_contents_comic_url, role: 'form', method: 'put', multipart: true, html: {class: 'form-horizontal'}} do |f| %>
 
 <div class="row">
-	<div class="col-md-11">
-    <%= button_tag 'Update Comic', type: 'submit', class: "btn btn-primary pull-right" %>
-  </div>
-  <div class="col-md-1">
-    <%= button_tag 'Reset', class: "btn btn-default pull-right", type: 'reset' %>
+  <div class="col-md-offset-7 col-md-5">
+    <%= link_to 'Episodes', admin_contents_comic_episodes_url(comic_id: params[:id]), class: "btn btn-primary" %>
+    <%= button_tag 'Update', type: 'submit', class: "btn btn-primary green" %>
+    <%= button_tag 'Reset', class: "btn btn-default", type: 'reset' %>
   </div>
 </div>
 

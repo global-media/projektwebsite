@@ -27,7 +27,16 @@ module Sort
   protected
     
     def initialize_sort!
-      self.sort = (self.class.where(@sort_group_by ? ["#{@sort_group_by.to_str} = ?", self.send(@sort_group_by)] : "1=1").collect(&:sort).compact.sort.last || 0) + 1
+      conditions = "1=1"
+      unless !respond_to?(:sort_group_by) || sort_group_by.blank?
+        array = []
+        sort_group_by.each do |key, value|
+          array << "#{key.to_s} = '#{value}'"
+        end
+        conditions = array.join(' AND ')
+      end
+      
+      self.sort = (self.class.where(conditions).collect(&:sort).compact.max || 0).next
     end
         
 end

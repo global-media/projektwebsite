@@ -30,6 +30,8 @@ class EpisodesController < ApplicationController
     
   def update
     @episode = Episode.find(params[:id])
+    @episode.image.clear if episode_params[:image].is_a?(String) && episode_params[:image].empty?
+    @episode.banner_image.clear if episode_params[:banner_image].is_a?(String) && episode_params[:banner_image].empty?
     if @episode.update_attributes(episode_params)
       @comic = @episode.comic
       flash[:success] = 'Episode Update success!'

@@ -1,19 +1,20 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!-- HTML -->
 
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if IE 8]> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <!--<![endif]-->
   
   <%= render partial: 'layouts/frontend_header' %>
 	
 <body>
-<div>
+
+  <%= render partial: 'layouts/frontend_navigation' %>
 
   <%= yield %>
   
-  <%= render partial: 'layouts/footer' %>
+  <%= render partial: 'layouts/frontend_footer' %>
   
 </body>
 <!-- END BODY -->

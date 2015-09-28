@@ -1,0 +1,21 @@
+<div class="comicHeader parallax-window" data-parallax="scroll" data-image-src="<%= @comic.banner_image.url %>">
+	<div class="container"></div>
+</div>
+
+<!-- Page Content -->
+<div id="wrapper" class="container comicContainer">
+
+  <!-- LATEST Section -->
+  <div class="col-md-7 comicList">
+  	<div class="title">
+  		<span class="line"></span>
+  		<h2>Episodes</h2>
+  	</div>
+
+    <%= comics mode: 'comic', comic: @comic %>
+	
+  </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.wrapper -->

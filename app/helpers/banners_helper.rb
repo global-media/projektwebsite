@@ -43,10 +43,10 @@ module BannersHelper
       <<-STR
     		<!-- Controls -->
     		<a class="left carousel-control" href="#carousel-home" role="button" data-slide="prev">
-    			<span class="glyphicon glyphicon-chevron-left ion-ios-arrow-thin-left"></span>
+    			<span class="glyphicon glyphicon-chevron-left"></span>
     		</a>
     		<a class="right carousel-control" href="#carousel-home" role="button" data-slide="next">
-    			<span class="glyphicon glyphicon-chevron-right ion-ios-arrow-thin-right"></span>
+    			<span class="glyphicon glyphicon-chevron-right"></span>
     		</a>
       STR
     end

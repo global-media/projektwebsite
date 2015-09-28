@@ -1,10 +1,11 @@
     <%= render partial: 'news/header', locals: {breadcrumbs: []} %>
     
     <%= form_tag  sort_admin_contents_news_index_url, {role: 'form', method: 'post'} do |f| %>
-    
+
     <div class="row">
-  		<div class="col-md-12">
-        <%= button_tag 'Sort News', type: 'submit', class: "btn btn-primary pull-right" %>
+      <div class="col-md-offset-9 col-md-3">
+        <%= link_to 'Add', new_admin_contents_news_url, alt: "Add", class: "btn btn-primary green" %>
+        <%= button_tag 'Sort', type: 'submit', class: "btn btn-default" %>
       </div>
     </div>
     
@@ -18,7 +19,6 @@
 							<i class="fa fa-rss"></i>News
 						</div>
 						<div class="tools">
-						  <%= link_to raw('<i class="fa fa-plus"></i>'), new_admin_contents_news_url, alt: "Add" %>              
 						  <a class="fullscreen" href="javascript:;" data-original-title="" title=""></a>
          			<a href="javascript:;" class="collapse"></a>
 						</div>

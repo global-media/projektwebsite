@@ -84,7 +84,9 @@ Rails.application.routes.draw do
       resources :comics do
         resources :episodes do
           post 'sort', on: :collection
-          resources :images, only: [:create, :destroy]
+          resources :images, only: [:create, :destroy] do
+            post 'sort', on: :collection
+          end
         end
         post 'sort', on: :collection
       end
@@ -157,6 +159,10 @@ Rails.application.routes.draw do
   end
   
   post 'mailing_lists/signup', controller: 'mailing_lists', action: 'signup'
+
+  get 'catalogs', controller: 'catalogs', as: 'catalogs_all', action: 'comics'
+  get 'catalogs/:comic', controller: 'catalogs', comic: nil, as: 'catalogs_comic', action: 'comic'
+  get 'catalogs/episode/:episode', controller: 'catalogs', episode: nil, as: 'catalogs_comic_episode', action: 'episode'
   
   get ':controller/:action/:id'
   
