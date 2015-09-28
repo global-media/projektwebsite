@@ -1,0 +1,147 @@
+<!-- LightGallery plugin  -->
+	<link href="/assets/vendor/lightgallery.min.css" rel="stylesheet">
+	<style>
+		#lightgallery{padding-left:0px;list-style: none;}
+		#lightgallery li{margin-bottom:10px;}
+		.lg-thumb-open .lg-img-wrap {
+			padding-bottom: 100px;
+		}
+		.rate{
+			float: right;
+			margin-top: -30px;
+		}
+	</style>	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#lightgallery').lightGallery({
+				thumbWidth:70,
+				download:false,
+				loop:false,
+				hideControlOnEnd:true,
+				showThumbByDefault: false
+			});
+		});
+	</script>
+	<script type="text/javascript" src="/assets/vendor/lightgallery.min.js"></script>
+	<script type="text/javascript" src="/assets/vendor/lg-fullscreen.min.js"></script>
+	<script type="text/javascript" src="/assets/vendor/lg-thumbnail.min.js"></script>
+	<script type="text/javascript" src="/assets/vendor/jquery.mousewheel.min.js"></script>
+	<!-- LightGallery end  -->
+	
+	<!-- Sweetalert plugin -->
+	<link rel="stylesheet" href="/assets/vendor/sweetalert.css" type="text/css" />
+	<script type="text/javascript" src="/assets/vendor/sweetalert.min.js"></script>	
+	<!-- Sweetalert plugin end -->
+	
+	
+	<!-- Rating plugin -->
+	<link href="/assets/vendor/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/assets/vendor/star-rating.min.js"></script>
+	<!-- Rating end -->
+	
+	<!-- Sharethis plugin   
+	<script type="text/javascript">var switchTo5x=true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "86a8cd57-363b-408e-969c-49c643a64b84", doNotHash: false, doNotCopy: false, hashAddressBar: true});</script>
+	<style>
+		.stButton .stFb, .stButton .stTwbutton, .stButton .stMainServices, .stButton .stButton_gradient {height:22px;}
+		.comic_episodeNav .shareBtn {float:right; margin-top: -25px;}
+	</style>
+	<!-- Sharethis end  -->
+	
+	<!-- Disable drag & right click on image -->
+	<script type="text/javascript">
+		//this part disables dragging of image
+
+		// register onLoad event with anonymous function
+		window.onload = function (e) {
+			var evt = e || window.event,// define event (cross browser)
+				imgs,                   // images collection
+				i;                      // used in local loop
+			// if preventDefault exists, then define onmousedown event handlers
+			if (evt.preventDefault) {
+				// collect all images on the page
+				imgs = document.getElementsByTagName('img');
+				// loop through fetched images
+				for (i = 0; i < imgs.length; i++) {
+					// and define onmousedown event handler
+					imgs[i].onmousedown = disableDragging;
+				}
+			}
+		};
+		 
+		// disable image dragging
+		function disableDragging(e) {
+			e.preventDefault();
+		}
+		
+		// this part disables the right click
+		//<![CDATA[
+		function nocontext(e) {
+			var clickedTag = (e==null) ? event.srcElement.tagName : e.target.tagName;
+			if (clickedTag == "IMG") {
+					swal("© 2015 Kosmik", "comics on kosmik.id are copyrighted material and all rights are reserved.", "warning")
+					return false;
+			}
+		}
+		document.oncontextmenu = nocontext;
+		//]]>
+	</script>
+	<!-- Disable drag & right click on image end  -->	<!-- Comic Episode  -->
+	<header class="comic_episodeNav ">
+		<a href="/">
+			<img class="logo" src="/assets/img/logo.png" alt="" />
+		</a>
+		<span class="epBreadcrumb">
+		  <%= link_to(@episode.comic.name, catalogs_comic_url(comic: @episode.comic.url_name)) %>
+			<span class="glyphicon glyphicon-chevron-right"></span>
+			<i><%= @episode.name %></i>
+		</span>
+			
+		<div class="episodeNav_pagination">
+		  <% unless @episode.first? %>
+		  <%= link_to(raw('<span class="glyphicon glyphicon-triangle-left"></span>'), catalogs_comic_episode_url(episode: @episode.previous.url_name)) %>
+      <% end %>
+			<i>#<%= @episode.sort %></i>	
+		  <% unless @episode.last? %>
+		  <%= link_to(raw('<span class="glyphicon glyphicon-triangle-right"></span>'), catalogs_comic_episode_url(episode: @episode.next.url_name)) %>
+      <% end %>
+		</div>
+		<!--
+		<span class="rate">
+			<input id="input-6a" class="rating" data-show-caption="false" data-size="xs">
+		</span>
+		-->
+	</header>
+
+    <!-- Page Content  -->
+    <div id="wrapper" class="container comic_episodeContainer">
+
+		<%= episodes mode: 'reader', episode: @episode %>
+		
+		<!-- SHARE Section -->
+		<div class="row shareBtn">
+			<div class="col-md-8 col-md-push-2">
+				<span class='st__vcount' displayText=''></span>
+				<span class='st_facebook_vcount' displayText='Facebook'></span>
+				<span class='st_twitter_vcount' displayText='Tweet'></span>
+				<span class='st_googleplus_vcount' displayText='Google +'></span>
+				<span class='st_email_vcount' displayText='Email'></span>
+			</div>
+		</div>
+		
+		<!-- RELATED Section -->
+		<div class="row comicRelated">
+			<div class="col-md-12 title">
+				<span class="line"></span>
+				<h2>RELATED COMICS</h2>
+			</div>
+			
+			<%= comics mode: 'related', episode: @episode %>
+			
+		</div>
+		<!-- /.row -->
+
+
+    </div>
+    <!-- /.wrapper -->

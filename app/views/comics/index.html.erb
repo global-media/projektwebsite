@@ -2,9 +2,10 @@
     
     <%= form_tag  sort_admin_contents_comics_url, {role: 'form', method: 'post'} do |f| %>
     
-    <div class="row">
-  		<div class="col-md-12">
-        <%= button_tag 'Sort Comic', type: 'submit', class: "btn btn-primary pull-right" %>
+  	<div class="row">
+      <div class="col-md-offset-9 col-md-3">
+        <%= link_to 'Add', new_admin_contents_comic_url, alt: "Add", class: "btn btn-primary green" %>
+        <%= button_tag 'Sort', type: 'submit', class: "btn btn-default" %>
       </div>
     </div>
     
@@ -18,7 +19,6 @@
 							<i class="fa fa-rocket"></i>Comics
 						</div>
 						<div class="tools">
-						  <%= link_to raw('<i class="fa fa-plus"></i>'), new_admin_contents_comic_url, alt: "Add" %>              
 						  <a class="fullscreen" href="javascript:;" data-original-title="" title=""></a>
          			<a href="javascript:;" class="collapse"></a>
 						</div>
@@ -29,11 +29,11 @@
 							<thead>
 							<tr>
 								<th class="col-md-1"><i class="fa fa-sort"></i> Sort</th>
-								<th><i class="fa fa-photo"></i> Image</th>
+								<th><i class="fa fa-photo"></i> Banner Image</th>
 								<th><i class="fa fa-info"></i> Name</th>
-								<th><i class="fa fa-file-text-o"></i> Description</th>
+								<!--th><i class="fa fa-file-text-o"></i> Description</th-->
 								<th><i class="fa fa-plus-square-o"></i> Episodes</th>
-								<th class="col-md-4">&nbsp;</th>
+								<th class="col-md-5">&nbsp;</th>
 							</tr>
 							</thead>
 							<tbody>
@@ -41,11 +41,11 @@
 							  <%= hidden_field_tag "comic[sort][#{comic.id}][old]", comic.sort %>
 							  <tr>
   								<td class="col-md-1"><%= text_field_tag "comic[sort][#{comic.id}][new]", comic.sort, class: 'form-control-size', placeholder: 'Sort #', size: 3, maxlength: 3 %></td>
-  								<td><%= image_tag comic.image.url(:thumb), style: "width: 100px; height: 100px;" %></td>
+  								<td><%= image_tag comic.banner_image.url(:thumb) %></td>
                   <td><%= comic.name %></td>
-                  <td><%= comic.description %></td>
+                  <!--td><%= comic.description %></td-->
                   <td><%= comic.episodes.size %></td>
-                  <td class="col-md-4">
+                  <td class="col-md-5">
                     <%= link_to raw('<i class="icon-pencil"> Edit</i>'), edit_admin_contents_comic_url(id: comic.id), class: "btn btn-warning btn-xs" %>
                     <%= link_to raw('<i class="icon-trash"> Delete</i>'), admin_contents_comic_url(id: comic.id), class: "btn btn-danger btn-xs", method: :delete, data: { confirm: "Are you sure you want to delete this comic?" } %>
                     <%= link_to raw('<i class="icon-eye"> View Episodes</i>'), admin_contents_comic_episodes_url(comic_id: comic.id), class: "btn btn-primary btn-xs" %>
@@ -61,4 +61,5 @@
 			</div>
 		</div>
 		<!-- END PAGE CONTENT-->
+  	
 		<% end %>

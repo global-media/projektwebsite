@@ -16,4 +16,5 @@ class Image < ActiveRecord::Base
   
   before_create :initialize_sort!
   
+  def sort_group_by; {:content_id => content_id, :content_type => content_type}; end
 end

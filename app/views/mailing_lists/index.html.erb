@@ -1,4 +1,10 @@
     <%= render partial: 'mailing_lists/header', locals: {breadcrumbs: []} %>
+
+    <div class="row">
+      <div class="col-md-offset-10 col-md-2">
+        <%= link_to 'Add', new_admin_mailings_list_url, alt: "Add", class: "btn btn-primary green" %>
+      </div>
+    </div>
     
     <!-- BEGIN PAGE CONTENT-->
 		<div class="row">
@@ -10,7 +16,6 @@
 							<i class="fa fa-users"></i>Lists
 						</div>
 						<div class="tools">
-						  <%= link_to raw('<i class="fa fa-plus"></i>'), new_admin_mailings_list_url, alt: "Add" %>              
 						  <a class="fullscreen" href="javascript:;" data-original-title="" title=""></a>
          			<a href="javascript:;" class="collapse"></a>
 						</div>

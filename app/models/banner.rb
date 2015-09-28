@@ -3,8 +3,9 @@ class Banner < ActiveRecord::Base
   
   has_many :images
   
-  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/system/defaults/no_image.png"
+  has_attached_file :image, :styles => { :medium => "682x225>", :small => "341x113>", :thumb => "170x56>" }, :default_url => "/system/defaults/no_image.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  validates :image, dimensions: { width: 1366, height: 450 }
   
   validates_presence_of :name#, :link_url, :publish_at, :retract_at
   

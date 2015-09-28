@@ -3,11 +3,9 @@
   <%= form_for @banner, {url: admin_contents_banners_url, role: 'form', method: 'post', multipart: true, html: {class: 'form-horizontal'}} do |f| %>
 
   <div class="row">
-		<div class="col-md-11">
-      <%= button_tag 'Create Banner', type: 'submit', class: "btn btn-primary pull-right" %>
-    </div>
-    <div class="col-md-1">
-      <%= button_tag 'Reset', class: "btn btn-default pull-right", type: 'reset' %>
+    <div class="col-md-offset-9 col-md-3">
+      <%= button_tag 'Create', type: 'submit', class: "btn btn-primary green" %>
+      <%= button_tag 'Reset', class: "btn btn-default", type: 'reset' %>
     </div>
   </div>
   

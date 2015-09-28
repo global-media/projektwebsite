@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
   include Rack::Recaptcha::Helpers
 
   SITE_NAME = 'Kosmik'.freeze
-  SITE_ICON = 'ico.png'.freeze
-  SITE_LOGO = 'logo.png'.freeze
+  SITE_ICON = 'assets/img/ico.png'.freeze
+  SITE_LOGO = 'assets/img/logo.png'.freeze
   
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
