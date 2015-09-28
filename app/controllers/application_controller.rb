@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Rack::Recaptcha::Helpers
 
+  SITE_URL = 'kosmik.id'.freeze
   SITE_NAME = 'Kosmik'.freeze
   SITE_ICON = 'assets/img/ico.png'.freeze
   SITE_LOGO = 'assets/img/logo.png'.freeze

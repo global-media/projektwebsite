@@ -80,7 +80,7 @@
 		function nocontext(e) {
 			var clickedTag = (e==null) ? event.srcElement.tagName : e.target.tagName;
 			if (clickedTag == "IMG") {
-					swal("© 2015 Kosmik", "comics on kosmik.id are copyrighted material and all rights are reserved.", "warning")
+					swal("© 2015 <%= ApplicationController::SITE_NAME %>", "comics on <%= ApplicationController::SITE_URL %> are copyrighted material and all rights are reserved.", "warning")
 					return false;
 			}
 		}
@@ -90,7 +90,7 @@
 	<!-- Disable drag & right click on image end  -->	<!-- Comic Episode  -->
 	<header class="comic_episodeNav ">
 		<a href="/">
-			<img class="logo" src="/assets/img/logo.png" alt="" />
+			<img class="logo" src="/<%= ApplicationController::SITE_LOGO %>" alt="" />
 		</a>
 		<span class="epBreadcrumb">
 		  <%= link_to(@episode.comic.name, catalogs_comic_url(comic: @episode.comic.url_name)) %>

@@ -1,9 +1,9 @@
 <footer><!-- Footer -->
 	<div class="container">
 		<div class="col-md-3">
-			<h3>Kosmik</h3>
+			<h3><%= ApplicationController::SITE_NAME %></h3>
 			<ul>
-				<li><a href="#">About Kosmik</a></li>
+				<li><a href="#">About <%= ApplicationController::SITE_NAME %></a></li>
 			</ul>
 		</div>
 		<div class="col-md-3">
@@ -16,7 +16,7 @@
 		</div>
 		<div class="col-md-3 pull-right">
 			<a href="/">
-				<img src="/assets/img/logo.png" alt="" />
+				<img src="/<%= ApplicationController::SITE_LOGO %>" alt="" />
 			</a>
 		</div>
 	</div>
